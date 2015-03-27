@@ -1,0 +1,758 @@
+\documentclass[10pt,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\Sf}{Sf}
+\DeclareMathOperator{\gr}{gr}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+
+\pdfinfo{
+  /Title (Calculus 1.pdf)
+  /Creator (Ricardo Jesus)
+  /Producer (Ricardo Jesus)
+  /Author (Ricardo Jesus)
+  /Subject (Calculus)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+\pagestyle{empty}
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\underline{Cálculo \RNum{1}}} \\
+\end{center}
+
+\section{Fórmulas}
+
+\subsection{Trigonometria}
+
+$\sin^2x + \cos^2x = 1$\\
+$1 + \tan^2x = \frac{1}{\cos^2x}$\\
+$\sin(a + b) = \sin a \cos b + \sin b\cos a$\\
+$\cos(a + b) = \cos a \cos b - \sin a\sin b$\\
+$\tan(a + b) = \frac{\tan a+\tan b}{1 - \tan a\tan b}$\\
+\rule[0.5ex]{\linewidth}{1pt}
+$\cdot \sin x = \frac{2\tan(\frac{x}{2})}{1+\tan^2(\frac{x}{2})};\ \cdot \cos x = \frac{1-\tan^2(\frac{x}{2})}{1+\tan^2(\frac{x}{2})};\ \cdot \tan x = \frac{2\tan(\frac{x}{2})}{1-\tan^2(\frac{x}{2})}$\\
+$\Rightarrow$ Para Primitivas:
+$\sin x = \frac{2t}{1+t^2}, \cos x = \frac{1-t^2}{1+t^2}, \tan x = \frac{2t}{1-t^2}, \cot x = \frac{1-t^2}{2t}$
+
+\subsection{Polinómios}
+
+$(a \pm b)^3 = a^3 \pm 3a^2b + 3ab^2 \pm b^3$
+
+\section{Limites}
+
+\subsection{Limites Notáveis}
+
+$\lim_{x \to \infty} (1+\frac{1}{x})^x=e$\\
+$\lim_{x \to 0} \frac{\sin(x)}{x}=1$\\
+$\lim_{x \to 0} \frac{e^x-1}{x}=1$\\
+$\lim_{x \to 0} \frac{\ln(x+1)}{x}=1$\\
+$\lim_{x \to +\infty} \frac{\ln(x)}{x}=0$\\
+$\lim_{x \to +\infty} \frac{e^x}{x^p}=+\infty, (p \in \mathbb{R})$\\
+
+\subsection{Limites Gerais}
+
+$\lim_{x \to a} (f(x) \pm g(x)) = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)$\\
+$\lim_{x \to a} (f(x)\cdot g(x)) = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)$\\
+$\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}$\\
+
+Indeterminações $\frac{0}{0}$ ou $\frac{\pm \infty}{\pm \infty}$:\\
+$\lim_{x \to a}\frac{f(x)}{g(x)}=\lim_{x \to a}\frac{f'(x)}{g'(x)}$\\
+Indeterminações $1^\infty$:\\
+Transformar em $\lim_{x \to a}[(1 + K_0)^\frac{1}{K_0}]^\text{infinito},\ K_0\ \text{é infinitésimo}$\\
+
+\section{Derivadas}
+
+\subsection{Derivadas Básicas}
+
+$f'(a) = \lim_{x \to a} \frac{f(x)-f(a)}{x-a} = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$\\
+
+$(c\ f)' = c\ f'(x)$\\
+$(x^n)' = nx^{n-1}$\\
+$(f \pm g)' = f'(x) \pm g'(x)$\\
+$(f g)' = f'g + f g'$\\
+$(\frac{f}{g})' = \frac{f'g-fg'}{g^2}$\\
+$(f \circ g)' = f'(g(x))\cdot g'(x)$\\
+
+\rule[0.5ex]{\linewidth}{1pt}
+%$(f^{-1})'=\frac{1}{f' \circ f^{-1}} = \frac{1}{f'(f^{-1})}$\\
+$(f^{-1})' = \frac{1}{f'(f^{-1})}$\\
+$(f^g)'=(e^{g\ln(f)})'=f^g(f'\frac{g}{f}+g'\ln(f))$\\
+
+\subsection{Derivadas Logarítmicas e Exponênciais}
+
+$(a^x)'=a^x\ln a$\\
+$(\ln x)'=\frac{1}{x},\ x>0$\\
+$(\log_a x)'=\frac{1}{x \ln a},\ x>0$\\
+
+\rule[0.5ex]{\linewidth}{1pt}
+$(x^x)'=x^x(1+\ln x)$\\
+$(e^{f(x)})'=f'(x)e^{f(x)}$\\
+$([f(x)]^n)'=n[f(x)]^{n-1}f'(x)$\\
+$(\ln[f(x)])'=\frac{f'(x)}{f(x)},\ f(x) > 0$\\
+
+\subsection{Derivadas Trigonométricas}
+
+$(\sin x)'=\cos x$\\
+$(\arcsin x)'=\frac{1}{\sqrt{1-x^2}}$\\
+$(\sec x)'=\sec x\tan x$\\
+$(\arcsec x)'=\frac{1}{|x|\sqrt{x^2-1}}$\\
+$(\cos x)'=-\sin x$\\
+$(\arccos x)'=-\frac{1}{\sqrt{1-x^2}}$\\
+$(\csc x)'=-\csc x\cot x$\\
+$(\arccsc x)'=-\frac{1}{|x|\sqrt{x^2-1}}$\\
+$(\tan x)'=\sec^2x=\frac{1}{\cos^2x}=1+\tan^2x$\\
+$(\arctan x)'=\frac{1}{1+x^2}$\\
+$(\cot x)'=-\csc^2x=-\frac{1}{\sin^2x}=-(1+\cot^2x$\\
+$(\arccot x)'=-\frac{1}{1+x^2}$\\
+
+\rule[0.5ex]{\linewidth}{1pt}
+$(\sin[f(x)])'=f'(x)\cos[f(x)]$\\
+$(\cos[f(x)])'=-f'(x)\sin[f(x)]$\\
+$(\tan[f(x)])'=f'(x)\sec^2[f(x)]=\frac{f'(x)}{\cos^2[f(x)]}$\\
+
+\section{Integrais}
+
+\subsection{Integrais Básicos}
+
+$\int c\cdot f(x)\ dx = c \int f(x)\ dx, c \in \mathbb{R}$\\
+$\int f(x) \pm g(x)\ dx = \int f(x)\ dx \pm \int g(x)\ dx$\\
+$\int_{a}^{b} f(x)\ dx = \left. F(x) \right|_{a}^{b} = F(b) - F(a),\ F(x) = \int f(x)\ dx$\\
+$[F(\varphi(x))]' = F'(\varphi(x))\varphi ' (x)$\\
+
+\subsubsection{Integrais Polinomiais}
+
+$\int dx = x + C,\ C \in \mathbb{R}$\\
+$\int k \ dx = kx + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{x} \ dx = \ln |x| + C,\ C \in \mathbb{R}$\\
+$\int x^n \ dx = \frac{x^{n+1}}{n+1} + C,\ n \neq -1\ \text{e}\ C \in \mathbb{R}$\\
+$\int \frac{1}{ax + b} \ dx = \frac{1}{a} \ln |ax+b| + C,\ C \in \mathbb{R}$\\
+
+\rule[0.5ex]{\linewidth}{1pt}
+
+$\int \frac{\varphi'(x)}{\varphi(x)}\ dx = \ln [\varphi(x)] + C,\ C \in \mathbb{R}$\\
+$\int \varphi'(x)[\varphi (x)]^a\ dx = \frac{\varphi^{a+1}(x)}{a+1} + C,\ a \neq -1\ \text{e}\ C \in \mathbb{R}$\\
+
+\subsubsection{Integrais Trigonométricos}
+
+$\int \cos x \ dx = \sin x + C,\ C \in \mathbb{R}$\\
+$\int \sin x \ dx = -\cos x + C,\ C \in \mathbb{R}$\\
+$\int \sec^2x \ dx = \int \frac{1}{\cos^2x} = \tan x + C,\ C \in \mathbb{R}$\\
+$\int \csc^2x \ dx = \int \frac{1}{\sin^2x} = -\cot x + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{\sqrt{1-x^2}}\ dx = \arcsin x + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{\sqrt{1-x^2}}\ dx = -\arccos x + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{1+x^2}\ dx = \arctan x + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{1+x^2}\ dx = -\arccot x + C,\ C \in \mathbb{R}$\\
+
+\rule[0.5ex]{\linewidth}{1pt}
+
+$\int \varphi'(x) \cos[\varphi(x)]\ dx = \sin \varphi(x) + C,\ C \in \mathbb{R}$\\
+$\int \varphi'(x) \sin[\varphi(x)]\ dx = -\cos \varphi(x) + C,\ C \in \mathbb{R}$\\
+$\int \frac{\varphi'(x)}{\cos^2\varphi(x)}\ dx = \tan \varphi(x) + C,\ C \in \mathbb{R}$\\
+$\int \frac{\varphi'(x)}{\sin^2\varphi(x)}\ dx = -\cot \varphi(x) + C,\ C \in \mathbb{R}$\\
+$\int \frac{\varphi'(x)}{\sqrt{1-\varphi(x)^2}}\ dx = \arcsin \varphi(x) + C,\ C \in \mathbb{R}$\\
+$\int \frac{\varphi'(x)}{\sqrt{1-\varphi(x)^2}}\ dx = -\arccos \varphi(x) + C,\ C \in \mathbb{R}$\\
+$\int \frac{\varphi'(x)}{1+\varphi(x)^2}\ dx = \arctan \varphi(x) + C,\ C \in \mathbb{R}$\\
+$\int \frac{\varphi'(x)}{1+\varphi(x)^2}\ dx = -\arccot\varphi(x) + C,\ C \in \mathbb{R}$\\
+
+\subsubsection{Integrais Exponênciais/Logarítmicos}
+
+$\int e ^ x \ dx = e ^ x + C,\ C \in \mathbb{R}$\\
+$\int a^x\ dx = \frac{a^x}{\ln a} + C,\ C \in \mathbb{R}$\\
+
+\rule[0.5ex]{\linewidth}{1pt}
+$\int \varphi'(x) e^{\varphi(x)}\ dx = e^{\varphi(x)} + C,\ C \in \mathbb{R}$\\
+
+\subsection{Primitivação por partes}
+
+$\int f'(x)g(x)\ dx = f(x)g(x) - \int f(x)g'(x)\ dx$\\
+Nota: $d\varphi(x) = \varphi'(x)\ dx$\\
+$\rightarrow \int f(x)g'(x)\ dx = \int v\ du = uv - \int u\ dv$\\
+
+\smallskip
+\RNum{1}\\
+\smallskip
+$\begin{rcases}
+\int P_k (x) \sin(bx)\ dx\\
+\int P_k (x) \cos(bx)\ dx\\
+\int P_k (x)\ e^{ax}\ dx
+\end{rcases}
+\begin{array}{l@{\;}l}
+u = P_k (x)\\
+v' = \begin{cases}
+\cdot \sin(bx)\\
+\cdot \cos(bx)\\
+\cdot \ e ^{ax}
+\end{cases}
+\end{array}$
+
+\smallskip
+\RNum{2}\\
+\smallskip
+$\begin{rcases}
+\int P_k (x) \ln(bx)\ dx\\
+\int P_k (x) \arcsin x\ dx\\
+\int P_k (x) \arccos x\ dx\\
+\int P_k (x) \arctan x\ dx\\
+\int P_k (x) \arccot x\ dx\\
+\end{rcases}
+\begin{array}{l@{\;}l}
+u = \begin{cases}
+\cdot \ln (bx)\\
+\cdot \arcsin x\\
+\cdot \arccos x\\
+\cdot \arctan x\\
+\cdot \arccot x\\
+\end{cases}\\
+v' = P_k (x) 
+\end{array}$
+
+\smallskip
+\RNum{3} - \underline{2 vezes por partes}\\
+\smallskip
+$\begin{rcases}
+\int e^{ax} \sin (bx)\ dx\\
+\int e^{ax} \cos (bx)\ dx\\
+\end{rcases}
+\begin{array}{l@{\;}l}
+\text{Hipótese 1}\\
+u = e^{ax},\ v' =
+\begin{cases}
+\cdot \sin (bx)\hspace{0.58cm} \circled{1}\\
+\cdot \cos (bx)\hspace{0.55cm} \circled{2}
+\end{cases}\\
+\text{Hipótese 2}\\
+u =
+\begin{cases}
+\cdot \sin (bx)\\
+\cdot \cos (bx)\\
+\end{cases}
+,\ v' = e^{ax}
+\begin{aligned}
+\ \circled{1}\\
+\ \circled{2}
+\end{aligned}
+\end{array}$
+
+\subsection{Primitivação de Funções Racionais (por decomposição)}
+
+$\text{Função Racional:}\ \frac{P(x)}{Q(x)},\ \text{P e Q polinómios de coeficientes reais.}$\\
+$\cdot \text{Função Racional}\ \textbf{Própria} \to \gr(P(x)) < \gr(Q(x))$\\
+$\cdot \text{Função Racional}\ \textbf{Imprópria} \to \gr(P(x)) \geq \gr(Q(x))$\\
+\begin{enumerate}\setcounter{enumi}{-1}
+\item $\text{Função Racional Imprópria} \to \text{Polinómio} + \text{F. R. Própria}$\\
+\item $\text{Resolver}\ Q(x)=0,\ \text{decompondo-se}\ Q(x)\ \text{em}:$\\
+\begin{itemize}\renewcommand{\labelitemi}{$-$}
+\item Constantes $(a)$
+\item $(x-R)^l,\ l \in \mathbb{N} \to l - \text{Mult. de Raizes Reais}$
+\item $(x^2 + px + q)^k,\ k \in \mathbb{N} \to k - \text{Mult. de Raizes}\ \alpha \pm i\beta$
+\end{itemize}
+$Q(x) = a(x-R_1)^{l_1} \cdot (x-R_2)^{l_2} \cdot ... \cdot (x^2 + p_1x + q_1)^{k_1} \cdot (x^2+p_2x+q_2)^{k_2} \cdot ...$
+\item $\frac{P(x)}{Q(x)} = \frac{P(x)}{a(x-R_1)^{l_1} \cdot ... \cdot (x^2 + p_1x + q_1)^{k_1} \cdot ...}$
+\begin{itemize}\renewcommand{\labelitemi}{$-$}
+\item Determinar: $\frac{A_1}{x-R_1}+\frac{A_2}{(x-R_1)^2}+\frac{A_3}{(x-R_1)^3}+...+	\frac{A_{l_1}}{(x-R_1)^{l_1}}$\\
+nº de parcelas $= l_1$ (multiplicidade)
+\item Determinar: $\frac{E_1+D_1x}{x^2+p_1x+q}+\frac{E_2+D_2x}{(x^2+p_1x+q_1)^2}+...+\frac{E_{k_1}+D_{k_1}x}{(x^2+p_1x+q_1)^{k_1}}$
+nº de parcelas $= k_1$ (multiplicidade)
+\end{itemize}
+$\Longrightarrow \frac{P(x)}{Q(x)} = \text{soma de todas as parcelas}$\\
+\item Calcular valores $A_1, ..., A_{l_1}$ e $E_1, D_1, ..., E_{k_1}, D_{k_1}$ através do método dos coeficientes indeterminados.
+\end{enumerate}
+
+\subsubsection{Primitivas de Funções Racionais}
+
+$\int \frac{1}{x^2+a^2}\ dx = \frac{1}{a} \arctan(\frac{x}{a}) + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{(x \pm b)^2 + a^2}\ dx = \frac{1}{a} \arctan(\frac{x \pm b}{a}) + C,\ C \in \mathbb{R}$\\
+Se $\exists \int f(x)\ dx = F(x) + C$\\
+$\Rightarrow \int f(ax + b)\ dx = \frac{1}{a} F(ax + b) + C,\ C \in \mathbb{R}$
+
+\rule[0.5ex]{\linewidth}{1pt}
+$\int \frac{1}{[\varphi(x)]^2-a^2}\varphi'(x)\ dx = \frac{1}{2} \ln|\frac{\varphi(x)-a}{\varphi(x)+a}| + C,\ C \in \mathbb{R}$\\
+
+\subsection{Primitivação por Mudança de Variável}
+
+Seja $f$ uma função contínuma em $[a, b]$ e $x = \varphi(t)$ uma aplicação com derivada contínua e que não anula:
+$P_x(f(x)) = P_t(f(\varphi(t))) \cdot \varphi'(t)|_{t=\varphi^{-1}(x)}$\\
+$\rightarrow \int f(x)\ dx = \int f(\varphi(t))\ d\varphi(t) = \int f(\varphi(t)) \cdot \varphi'(t)\ dt|_{t=\varphi^{-1}(x)}$
+
+\subsubsection{Substituições}
+
+\begin{tabular}{|c|c|}
+\hline 
+\textbf{Primitivas} & \textbf{Substituição} \\ 
+\hline 
+$\int f(e^x)\ dx$ & $t=e^x \Rightarrow x = \ln t$ \\ 
+\hline 
+$\int f(\ln x)\ dx$ & $t = \ln x \Rightarrow x = e^t$ \\ 
+\hline 
+$\int f(x, x^{\frac{p}{q}}, x^{\frac{r}{s}}, ...)\ dx$ & $t = x^{\frac{1}{m}} \Rightarrow x = t^m$, \\
+
+& com $m=m.m.c.(q, s, ...)$ \\
+\hline 
+$\int f(x, (ax + b)^{\frac{p}{q}},$ & $t = (ax + b)^{\frac{1}{m}} \Rightarrow ax + b = t^m$, \\
+
+$(ax +b)^{\frac{r}{s}}, ...)\ dx$ & com $m=m.m.c.(q, s, ...)$ \\
+\hline 
+$\int f(x, \sqrt{ax^2+bx+c}),$ & $\sqrt{ax^2+bx+c} = t+x\sqrt{a}$\\
+
+$a > 0$ &\\
+\hline
+$\int f(x, \sqrt{ax^2+bx+c}),$ & $\sqrt{ax^2+bx+c} = tx+\sqrt{c}$\\
+
+$c > 0$ &\\
+\hline
+$\int f(x, \sqrt{ax^2+bx+c}),$ & $\sqrt{ax^2+bx+c} = (x-\alpha)t,$\\
+
+$b^2-4ac > 0$ & $\alpha$ é raíz de $ax^2+bx+c$\\
+\hline
+\end{tabular} 
+
+\subsection{Primitivação de Funções Trigonométricas}
+
+\begin{enumerate}
+\item $\int f(\sin^kx, \cos^mx)\ dx$
+\begin{enumerate}
+\item $k - \text{par},\ m - \text{ímpar}$\\
+\hspace{0.2cm} substituição $t=\sin x$
+\item $k - \text{ímpar},\ m - \text{par}$\\
+\hspace{0.2cm} substituição $t=\cos x$
+\item $k,\ m - \text{ímpares}$\\
+\hspace{0.2cm} substituição $t=\sin x\ \text{ou}\ t = \cos x$\\
+\hspace{0.2cm} + fórm.: $\sin x \cos x = \frac{1}{2} \sin (2x)$
+\item $k,\ m - \text{pares}$\\
+\hspace{0.2cm} "baixar" ordem de $\sin x$ e $\cos x$:\\
+\hspace{0.2cm} $\sin^2x=\frac{1}{2}(1-\cos (2x))$\\
+\hspace{0.2cm} $\cos^2x=\frac{1}{2}(1+\cos (2x))$\\
+\end{enumerate}
+\item $\int f(\tan^kx)\ dx$ ou $\int f(\cot^kx)\ dx$\\
+Fórmulas: \begin{itemize}%\renewcommand{\labelitemi}{$-$}
+\item $\tan^2x = \frac{1}{\cos^2x}-1$
+\item $\cot^2x = \frac{1}{\sin^2x}-1$
+\end{itemize}
+\item $\int f(\sin x,\ \cos x)\ dx,\ \int f(\tan x)\ dx,\ \int f(\cot x)\ dx$\\
+\underline{Substituição "Universal":} $t = \tan(\frac{x}{2}) \Rightarrow x = 2\arctan t \Rightarrow dx = \frac{2}{1+t^2}\ dt$
+\end{enumerate}
+
+\subsection{Primitivação de Funções Irracionais}
+
+$\rightarrow$ Substituir usando Fórmulas Trigonométricas\\
+\begin{enumerate}
+\item $\int f(\sqrt{a^2-b^2x^2})\ dx$\\
+$\sqrt{a^2-b^2x^2} = \sqrt{a^2(1-(\frac{b}{a}x)^2)} = a\sqrt{1-(\frac{b}{a}x)^2}$\\
+Subst.: $\frac{b}{a}x = \sin t \Rightarrow dx = \frac{a}{b}\cos t\ dt$\\
+$\int f(\sqrt{a^2-b^2x^2})\ dx = \int f(a\sqrt{1-\sin^2t})\cdot \frac{a}{b}\cdot \cos t\ dt$\\
+$\Longrightarrow \int f(a\cdot \cos t)\cdot \frac{a}{b}\cos t\ dt + C,\ C \in \mathbb{R}$\\
+\item $\int f(\sqrt{a^2+b^2x^2})\ dx$\\
+$\sqrt{a^2+b^2x^2} = \sqrt{a^2(1+(\frac{b}{a}x)^2)} = a\sqrt{1+(\frac{b}{a}x)^2}$\\
+Subst.: $\frac{b}{a}x = \tan t \Rightarrow dx = \frac{a}{b}\frac{1}{\cos^2t}\ dt$\\
+$\int f(\sqrt{a^2+b^2x^2})\ dx = \int f(a\sqrt{1+\tan^2t})\cdot \frac{a}{b}\cdot \frac{1}{\cos^2t}\ dt$\\
+$\Longrightarrow \int f(a\cdot \frac{1}{\cos t})\cdot \frac{a}{b}\cdot \frac{1}{\cos^2t}\ dt + C,\ C \in \mathbb{R}$\\
+\item $\int f(\sqrt{a^2x^2-b^2})\ dx$\\
+$\sqrt{a^2x^2-b^2} = \sqrt{b^2((\frac{a}{b}x)^2-1)} = b\sqrt{(\frac{a}{b}x)^2-1}$\\
+Subs.: $\frac{a}{b}x = \frac{1}{\cos t} \Rightarrow dx = \frac{b}{a}\cdot \frac{\sin t}{\cos^2 t}\ dt$\\
+$\int f(\sqrt{a^2x^2-b^2})\ dx = \int f(b\sqrt{(\frac{1}{\cos t})^2-1})\cdot \frac{b}{a}\cdot \frac{\sin t}{\cos^2t}\ dt$\\
+$\Longrightarrow \int f(b\tan t)\cdot \frac{b}{a}\cdot \frac{\sin t}{\cos^2t}\ dt + C,\ C \in \mathbb{R}$\\
+\end{enumerate}
+
+\section{Integrais de Riemann}
+
+Integral de Riemann é o limite da soma de Riemman.\\
+Soma de Riemann:\\
+$\Sf (P, C)=\sum_{i=1}^nf(c_i)\cdot \Delta x_i,\ \Delta x_i = x_i-x_{i-1}$\\
+$\Longrightarrow$ Integral de Riemann $=\lim_{x\to \infty}\sum_{i=1}^nf(c_i)\cdot \Delta x_i = I$\\
+$I = \int_a^bf(x)\ dx = \lim_{\Delta P\to 0} \Sf(P, C)$\\
+
+\rule[0.5ex]{\linewidth}{1pt}
+$\int_a^bf(x)\ dx = -\int_b^af(x)\ dx$\\
+
+\subsection{Geometria de integral de Riemann}
+
+$f: [a, b]\rightarrow \mathbb{R} - \text{integrável},\ a < b$\\
+\begin{enumerate}
+\item $f(x) > 0,\ \forall x\in [a, b]$\\
+$I=\int_a^bf(x)\ dx$\\
+\item $c\in ]a, b[: f(c)=0$\\
+$I=\int_a^bf(x)\ dx = \int_a^cf(x)\ dx + \int_c^bf(x)\ dx$\\
+\item $f, g:[a, b]-\mathbb{R} - \text{integráveis, e }f>g,\ \forall x\in [a, b]$\\
+$I=\int_a^b|f(x)-g(x)|\ dx$\\
+\end{enumerate}
+
+\subsection{Propriedades}
+
+$f, g:[a, b]\rightarrow \mathbb{R} - \text{integráveis e }\alpha, \beta \in \mathbb{R}$\\
+\begin{itemize}\renewcommand{\labelitemi}{$\cdot$}
+\item $\int_a^b[\alpha f(x) + \beta g(x)]\ dx = \alpha\int_a^bf(x)\ dx + \beta\int_a^bg(x)\ dx$\\
+\item $\text{Se } a<c<b \Rightarrow \int_a^bf(x)\ dx = \int_a^cf(x)\ dx + \int_c^bf(x)\ dx$\\
+\item $\text{Se } f(x)\geq 0,\ \forall x\in [a, b] \Rightarrow \int_a^bf(x)\ dx\geq 0$\\
+\item $\text{Se } f(x)\geq g(x),\ \forall x\in [a, b] \Rightarrow \int_a^bf(x)\ dx \geq \int_a^bg(x)\ dx$\\
+\item $\text{Se } m\leq f(x)\leq M,\ \forall x\in [a, b]$\\$\Rightarrow m(b-a)\leq \int_a^bf(x)\ dx\leq M(b-a)$\\
+\item $|\int_a^bf(x)\ dx|\leq \int_a^b|f(x)|\ dx$\\
+\end{itemize}
+
+\subsection{Critérios de Integrabilidade}
+
+\subsubsection{Condição Necessária}
+
+$\text{Se } f:[a, b]\rightarrow \mathbb{R}\text{ é integrável (no sentido de Riemann)}$\\
+$\Longrightarrow f \text{ é limitada em }[a, b]$\\
+$*Importante*\Rightarrow \text{Se } f \text{ não é limitada em } [a, b] \Rightarrow f\text{ não é integrável em } [a, b]\text{ (no sentido de Riemann)}$\\
+
+\subsubsection{Condições Suficientes}
+
+\begin{enumerate}
+
+\item Se $f$ é contínua em $[a, b] \Rightarrow f$ é integrável em $[a, b]$
+\item Se $f$ é limitada em $[a, b]$ e descontínua apenas num número finito de pontos de $[a, b] \Rightarrow f$ é integrável em $[a, b]$\\
+Ou:\\
+Se $f$ é limitada em $[a, b]$ e contínua por partes em $[a, b] \Rightarrow f$ é integrável em $[a, b]$
+\item Se $f$ é monótona em $[a, b] \Rightarrow f$ é integrável em $[a, b]$
+\item Se $f$ é integrável em $[a, b]$ e $g$ apenas difere de $f$ num número finito de pontos de $[a, b] \Rightarrow g$ é integrável em $[a, b]$ e:\\
+$\int_a^b g(x)\ dx = \int_a^b f(x)\ dx$
+
+\end{enumerate}
+
+\subsection{Teorema Fundamental de Cálculo Integral}
+
+$f: [a, b] \rightarrow \mathbb{R}$ integrável, podemos definir uma nova função $F'(x) = \int_a^x f(t)\ dt$, com $x \in [a, b]$.
+
+\textbf{Teorema \RNum{1}}\\
+Seja $f$ integrável em $[a, b]$ e $F(x) = \int_a^x f(t)\ dt,\ x \in [a, b]$\\
+$\Longrightarrow F$ é contínua em $[a, b]$.
+
+\textbf{Teorema \RNum{2}}\\
+Se:
+
+\begin{itemize}
+\item $f$ é integrável em $[a, b]$,\\
+\item $f$ é contínua em $c \in [a, b]$,\\
+\item $F(x) = \int_a^x f(t)\ dt$
+\end{itemize}
+
+$\Longrightarrow F$ é diferenciável em $c \in [a, b]$ e $F'(c) = f(c)$\\
+
+Na prática:\\
+Se $f$ é integrável e contínua em $[a, b]$ e $F(x) = \int_a^x f(t)\ dt \Rightarrow F'(x) = f(x),\ \forall x \in [a, b]$\\
+
+\underline{Nota:} $F(x) = \int_a^{g(x)} f(t)\ dt$, com $g(x) \in [a, b]$\\
+$u = g(x) \Rightarrow G(u) = \int_a^u f(t)\ dt, u \in [a, b]$
+
+\subsection{Teorema do Valor Médio}
+
+$f: [a, b] \rightarrow \mathbb{R}$ contínua, então $\exists c \in [a, b]:$\\
+$\int_a^b f(x)\ dx = f(c)f(b-a)$
+
+\subsection{Fórmula de Barrow (ou de Newton-Leibniz)}
+
+$\int_a^b f(x)\ dx = ?$ (integrál definido)\\
+
+\begin{enumerate}
+
+\item Primitivar\\
+$\int f(x)\ dx = F(x)$ (apenas uma)
+\item Substituir Limites de Integração\\
+$\int_a^b f(x)\ dx = F(x)|_a^b = F(b) - F(a)$
+
+\end{enumerate}
+
+\section{Integrais Impróprios}
+
+\subsection{Integrais Impróprios da 1ª Espécie}
+
+\begin{itemize}
+
+\item $f: [a, +\infty[ \rightarrow \mathbb{R},\ f$ é integrável em $\forall [a, c] \subset [a, +\infty[,\ c \in \mathbb{R}$\\
+$\int_a^{+\infty} f(x)\ dx = \lim_{c \to +\infty} \int_a^c f(x)\ dx$
+\item $f: ]-\infty, b] \rightarrow \mathbb{R},\ f$ é integrável em $\forall [c, b] \subset ]-\infty, b],\ c \in \mathbb{R}$\\
+$\int_{-\infty}^b f(x)\ dx = \lim_{c \to -\infty} \int_c^b f(x)\ dx$
+\item $f: ]-\infty, +\infty[ \rightarrow \mathbb{R},\ f$ é integrável em $\forall [a, b] \subset ]-\infty, +\infty[,\ a,\ b \in \mathbb{R}$\\
+$\int_{-\infty}^{+\infty} f(x)\ dx = \lim_{\substack{a \to -\infty \\ b \to +\infty}} \int_a^b f(x)\ dx$
+
+\end{itemize}
+
+Se o limite existe (finito e único):\\
+\underline{Integrál Impróprio Convergente}, caso contrário, \textbf{divergente}.
+
+\textbf{Calcular ex.:} $\int_0^{+\infty} f(x)\ dx = \lim_{c \to +\infty} \int_a^c f(x)\ dx$\\
+
+\begin{enumerate}
+
+\item Primitivar (apenas uma primitiva): $\int f(x) = F(x)$
+\item Fórmula de Barrow: $F(x)|_a^c = F(c) - F(a)$
+\item Calcular: $\lim_{c \to +\infty}[F(c) - F(a)]$
+
+\end{enumerate}
+
+\subsection{Integrais Impróprios da 2ª Espécie}
+
+\begin{itemize}
+
+\item $f: [a, b[ \rightarrow \mathbb{R},\ a,\ b \in \mathbb{R}$ e $f$ ilimitada na vizinhança de $b$: $\lim_{x \to b^-} f(x) = \pm \infty$\\
+$\int_a^b f(x)\ dx = \lim_{c \to b^-} f(x)\ dx$
+\item $f: ]a, b] \rightarrow \mathbb{R},\ a,\ b \in \mathbb{R}$ e $\lim_{x \to a^+} f(x) = \pm \infty$\\
+$\int_a^b f(x)\ dx = \lim_{c \to a^+} f(c)\ dx$
+\item $f: [a, b] \rightarrow \mathbb{R},\ a,\ b \in \mathbb{R}$ e $\exists c \in ]a, b[: \lim_{x \to c^{\pm}} f(x) = \pm \infty$ ($f$ não está definida em $c$)\\
+$\int_a^b f(x)\ dx = \int_a^{c^{-}} f(x)\ dx + \int_{c^{+}}^b f(x)\ dx$\\$= \lim_{d \to c^-} \int_a^d f(x)\ dx + \lim_{s \to c^+}\int_s^b f(x)\ dx$
+
+\end{itemize}
+
+\subsection{Integrais Impróprios da 3ª Espécie}
+
+Integral Impróprio da 1ª Espécie + Integral Impróprio da 2ª Espécie $\Rightarrow$ Separar em intervalos com apenas um dos tipos de Integrais Impróprios (1º ou 2º).
+
+\subsection{Propriedades dos Integrais Impróprios}
+
+\begin{enumerate}
+
+\item Se:
+\begin{itemize}
+\item $f, g: [a, b[ \rightarrow \mathbb{R}$ com $b \in \mathbb{R}$ ou $b = +\infty$
+\item $f, g$ - integráveis em $[\alpha, \beta] \subset [a, b[,\ \beta \in \mathbb{R}$
+\item $\int_a^b f(x)\ dx$ e $\int_a^b g(x)\ dx$ - convergentes
+\end{itemize}
+Então:\\
+$\int_a^b[\gamma f(x) + \eta g(x)]\ dx = \gamma \int_a^b f(x)\ dx + \eta \int_a^b g(x)\ dx$ - convergente
+
+\item Se $\int_a^b|f(x)|\ dx$ - convergente $\Rightarrow \int_a^b f(x)\ dx$ - convergente absolutamente
+
+\end{enumerate}
+
+\subsection{Critério de Comparação}
+Se:
+\begin{itemize}
+\item $f, g: [a, b[ \rightarrow \mathbb{R}, (b \in \mathbb{R}$ ou $b = +\infty)$
+\item $f, g$ - integráveis em $\forall [\alpha, \beta] \in [a, b[$
+\item $0 \leq f(x) \leq g(x), \forall x \in [a^*, b[, a \leq a^* \leq b$
+\end{itemize}
+\begin{enumerate}
+
+\item Se $\int_a^b g(x)\ dx$ - convergente $\Rightarrow \int_a^b f(x)\ dx$ - convergente
+\item Se $\int_a^b f(x)\ dx$ - divergente $\Rightarrow \int_a^b g(x)\ dx$ - divergente
+
+\end{enumerate}
+
+\textbf{Nota (Método \RNum{2})}:\\
+Se $f, g: [a, b[ \rightarrow \mathbb{R}, b \in \mathbb{R}$ ou $b = +\infty$ e\\
+$\lim_{x \to b^+} \frac{f(x)}{g(x)} = k \neq 0$ então:\\
+$\int_a^b g(x)\ dx$ e $\int_a^b f(x)\ dx$ têm a mesma natureza.\\
+$g(x)$ - é uma função \underline{primitivável} escolhida para comparar com $f(x)$.
+\columnbreak
+
+\section{Notas Pessoais:}
+\pagebreak
+
+\section{Extra - Fórmulas de Primitivação}
+
+\subsection{Funções Racionais}
+
+$\int \frac{1}{(x+a)^2}\ dx = -\frac{1}{x+a} + C,\ C \in \mathbb{R}$\\
+$\int (x+a)^n\ dx = \frac{(x+a)^{n+1}}{n+1} + C, n\ne -1,\ C \in \mathbb{R}$\\
+$\int x(x+a)^n\ dx = \frac{(x+a)^{n+1} ( (n+1)x-a)}{(n+1)(n+2)} + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{1+x^2}\ dx = \tan^{-1}x + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{a^2+x^2}\ dx = \frac{1}{a}\tan^{-1}\frac{x}{a} + C,\ C \in \mathbb{R}$\\
+$\int \frac{x}{a^2+x^2}\ dx = \frac{1}{2}\ln|a^2+x^2| + C,\ C \in \mathbb{R}$\\
+$\int \frac{x^2}{a^2+x^2}\ dx = x-a\tan^{-1}\frac{x}{a} + C,\ C \in \mathbb{R}$\\
+$\int \frac{x^3}{a^2+x^2}\ dx = \frac{1}{2}x^2-\frac{1}{2}a^2\ln|a^2+x^2| + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{ax^2+bx+c}\ dx = \frac{2}{\sqrt{4ac-b^2}}\arctan(\frac{2ax+b}{\sqrt{4ac-b^2}}) + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{(x+a)(x+b)}\ dx = \frac{1}{b-a}\ln(\frac{a+x}{b+x}) + C,\ a\ne b\ \text{e}\ C \in \mathbb{R}$\\
+$\int \frac{x}{(x+a)^2}\ dx = \frac{a}{a+x}+\ln |a+x| + C,\ C \in \mathbb{R}$\\
+$\int \frac{x}{ax^2+bx+c}\ dx = \frac{1}{2a}\ln|ax^2+bx+c|-\frac{b}{a\sqrt{4ac-b^2}}\tan^{-1}\frac{2ax+b}{\sqrt{4ac-b^2}} + C,\ C \in \mathbb{R}$
+
+\subsection{Raízes}
+
+$\int \sqrt{x-a}\ dx = \frac{2}{3}(x-a)^{3/2} + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{\sqrt{x\pm a}}\ dx = 2\sqrt{x\pm a} + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{\sqrt{a-x}}\ dx = -2\sqrt{a-x} + C,\ C \in \mathbb{R}$\\
+$\int \sqrt{ax+b}\ dx = \left(\frac{2b}{3a}+\frac{2x}{3}\right)\sqrt{ax+b} + C,\ C \in \mathbb{R}$\\
+$\int (ax+b)^{3/2}\ dx =\frac{2}{5a}(ax+b)^{5/2} + C,\ C \in \mathbb{R}$\\
+$\int \frac{x}{\sqrt{x\pm a} } \ dx = \frac{2}{3}(x\mp 2a)\sqrt{x\pm a} + C,\ C \in \mathbb{R}$\\
+$\int \sqrt{\frac{x}{a-x}}\ dx =  -\sqrt{x(a-x)}-a\arctan(\frac{\sqrt{x(a-x)}}{x-a}) + C,\ C \in \mathbb{R}$\\
+$\int \sqrt{\frac{x}{a+x}}\ dx =  \sqrt{x(a+x)}-a\ln \left [ \sqrt{x} + \sqrt{x+a}\right] + C,\ C \in \mathbb{R}$\\
+$\int x \sqrt{ax + b}\ dx =\frac{2}{15 a^2}(-2b^2+abx + 3 a^2 x^2)\sqrt{ax+b} + C,\ C \in \mathbb{R}$\\
+$\int\sqrt{x^2 \pm a^2}\ dx = \frac{1}{2}x\sqrt{x^2\pm a^2}\pm\frac{1}{2}a^2 \ln \left | x + \sqrt{x^2\pm a^2} \right | + C,\ C \in \mathbb{R}$\\ 
+$\int  \sqrt{a^2 - x^2}\ dx = \frac{1}{2} x \sqrt{a^2-x^2}+\frac{1}{2}a^2\arctan\frac{x}{\sqrt{a^2-x^2}} + C,\ C \in \mathbb{R}$\\
+$\int  x \sqrt{x^2 \pm a^2}\ dx= \frac{1}{3}\left ( x^2 \pm a^2 \right)^{3/2} + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{\sqrt{x^2 \pm a^2}}\ dx = \ln \left | x + \sqrt{x^2 \pm a^2} \right | + C,\ C \in \mathbb{R}$\\
+$\int \frac{1}{\sqrt{a^2 - x^2}}\ dx = \arcsin(\frac{x}{a}) + C,\ C \in \mathbb{R}$\\
+$\int \frac{x}{\sqrt{x^2\pm a^2}}\ dx = \sqrt{x^2 \pm a^2} + C,\ C \in \mathbb{R}$\\
+$\int \frac{x}{\sqrt{a^2-x^2}}\ dx = -\sqrt{a^2-x^2} + C,\ C \in \mathbb{R}$\\
+$\int \frac{x^2}{\sqrt{x^2 \pm a^2}}\ dx = \frac{1}{2}x\sqrt{x^2 \pm a^2} \mp \frac{1}{2}a^2 \ln \left| x + \sqrt{x^2\pm a^2} \right |  + C,\ C \in \mathbb{R}$\\
+$\int \sqrt{a x^2 + b x + c}\ dx = \frac{b+2ax}{4a}\sqrt{ax^2+bx+c}+\frac{4ac-b^2}{8a^{3/2}}\ln \left| 2ax + b + 2\sqrt{a(ax^2+bx^+c)}\right | + C,\ C \in \mathbb{R}$\\
+$\int\frac{1}{\sqrt{ax^2+bx+c}}\ dx=\frac{1}{\sqrt{a}}\ln \left| 2ax+b + 2 \sqrt{a(ax^2+bx+c)} \right | + C,\ C \in \mathbb{R}$\\
+$\int \frac{x}{\sqrt{ax^2+bx+c}}\ dx=\frac{1}{a}\sqrt{ax^2+bx + c}-\frac{b}{2a^{3/2}}\ln \left| 2ax+b + 2 \sqrt{a(ax^2+bx+c)} \right | + C,\ C \in \mathbb{R}$\\
+$\int\frac{dx}{(a^2+x^2)^{3/2}}=\frac{x}{a^2\sqrt{a^2+x^2}} + C,\ C \in \mathbb{R}$\\
+
+\subsection{Logarítmos}
+
+$\int \ln ax\  dx = x \ln ax - x + C,\ C \in \mathbb{R}$\\
+$\int x \ln x \ dx = \frac{1}{2} x^2 \ln x-\frac{x^2}{4} + C,\ C \in \mathbb{R}$\\
+$\int x^2 \ln x \ dx = \frac{1}{3} x^3 \ln x-\frac{x^3}{9} + C,\ C \in \mathbb{R}$\\
+$\int x^n \ln x\ dx = x^{n+1}\left( \dfrac{\ln x}{n+1}-\dfrac{1}{(n+1)^2}\right) + C,\hspace{2ex} n\neq -1,\ C \in \mathbb{R}$\\
+$\int \frac{\ln ax}{x}\ dx = \frac{1}{2}\left ( \ln ax \right)^2 + C,\ C \in \mathbb{R}$\\
+$\int \frac{\ln x}{x^2}\ dx = -\frac{1}{x}-\frac{\ln x}{x} + C,\ C \in \mathbb{R}$\\
+$\int \ln (ax + b) \ dx = \left ( x + \frac{b}{a} \right) \ln (ax+b) - x + C, a\ne 0,\ C \in \mathbb{R}$\\
+$\int \ln  ( x^2 + a^2 )\hspace{.5ex} {dx} = x \ln (x^2 + a^2  ) +2a\arctan \frac{x}{a} - 2x + C,\ C \in \mathbb{R}$\\
+$\int \ln  ( x^2 - a^2 )\hspace{.5ex} {dx} = x \ln (x^2 - a^2  ) +a\ln \frac{x+a}{x-a} - 2x + C,\ C \in \mathbb{R}$\\
+$\int \ln \left ( ax^2 + bx + c\right) \ dx  = \frac{1}{a}\sqrt{4ac-b^2}\arctan(\frac{2ax+b}{\sqrt{4ac-b^2}})-2x + \left( \frac{b}{2a}+x \right )\ln \left (ax^2+bx+c \right) + C,\ C \in \mathbb{R}$\\
+$\int x \ln (ax + b)\ dx = \frac{bx}{2a}-\frac{1}{4}x^2 +\frac{1}{2}\left(x^2-\frac{b^2}{a^2}\right)\ln (ax+b) + C,\ C \in \mathbb{R}$\\
+$\int x \ln \left ( a^2 - b^2 x^2 \right )\ dx = -\frac{1}{2}x^2+ \frac{1}{2}\left( x^2 - \frac{a^2}{b^2} \right ) \ln \left (a^2 -b^2 x^2 \right) + C,\ C \in \mathbb{R}$\\
+$\int (\ln x)^2\ dx = 2x - 2x \ln x + x (\ln x)^2 + C,\ C \in \mathbb{R}$\\
+$\int (\ln x)^3\ dx = -6 x+x (\ln x)^3-3 x (\ln x)^2+6 x \ln x + C,\ C \in \mathbb{R}$\\
+$\int x (\ln x)^2\ dx = \frac{x^2}{4}+\frac{1}{2} x^2 (\ln x)^2-\frac{1}{2} x^2 \ln x + C,\ C \in \mathbb{R}$\\
+$\int x^2 (\ln x)^2\ dx = \frac{2 x^3}{27}+\frac{1}{3} x^3 (\ln x)^2-\frac{2}{9} x^3 \ln x + C,\ C \in \mathbb{R}$\\
+
+\subsection{Exponênciais}
+
+$\int e^{ax}\ dx = \frac{1}{a}e^{ax} + C,\ C \in \mathbb{R}$\\
+$\int x e^x\ dx = (x-1) e^x + C,\ C \in \mathbb{R}$\\
+$\int x e^{ax}\ dx = \left(\frac{x}{a}-\frac{1}{a^2}\right) e^{ax} + C,\ C \in \mathbb{R}$\\
+$\int x^2 e^{x}\ dx = \left(x^2 - 2x + 2\right) e^{x} + C,\ C \in \mathbb{R}$\\
+$\int x^2 e^{ax}\ dx = \left(\frac{x^2}{a}-\frac{2x}{a^2}+\frac{2}{a^3}\right) e^{ax} + C,\ C \in \mathbb{R}$\\
+$\int x^3 e^{x}\ dx = \left(x^3-3x^2 + 6x - 6\right) e^{x} + C,\ C \in \mathbb{R}$\\
+$\int x^n e^{ax}\ dx = \dfrac{x^n e^{ax}}{a} - \dfrac{n}{a}\int x^{n-1}e^{ax}\hspace{1pt}\text{d}x + C,\ C \in \mathbb{R}$\\
+%$\int x^n e^{ax}\ dx = \frac{(-1)^n}{a^{n+1}}\Gamma[1+n,-ax], \text{ where } \Gamma(a,x)=\int_x^{\infty} t^{a-1}e^{-t}\hspace{2pt}\text{d}t + C,\ C \in \mathbb{R}$\\
+%$\int e^{ax^2}\ dx = -\frac{i\sqrt{\pi}}{2\sqrt{a}}\text{erf}\left(ix\sqrt{a}\right) + C,\ C \in \mathbb{R}$\\
+%$\int e^{-ax^2}\ dx = \frac{\sqrt{\pi}}{2\sqrt{a}}\text{erf}\left(x\sqrt{a}\right) + C,\ C \in \mathbb{R}$\\
+$\int x e^{-ax^2}\ {dx} = -\dfrac{1}{2a}e^{-ax^2} + C,\ C \in \mathbb{R}$\\
+%$\int x^2 e^{-ax^2}\ {dx} = \dfrac{1}{4}\sqrt{\dfrac{\pi}{a^3}}\text{erf}(x\sqrt{a}) -\dfrac{x}{2a}e^{-ax^2} + C,\ C \in \mathbb{R}$\\
+
+\subsection{Funções Trigonométricas}
+
+$\int \sin ax \ dx = -\frac{1}{a} \cos ax + C,\ C \in \mathbb{R}$\\
+$\int \sin^2 ax\  dx = \frac{x}{2} - \frac{\sin 2ax} {4a} + C,\ C \in \mathbb{R}$\\
+$\int \sin^3 ax \ dx = -\frac{3 \cos ax}{4a} + \frac{\cos 3ax} {12a} + C,\ C \in \mathbb{R}$\\
+%$\int \sin^n ax \ dx = -\frac{1}{a}{\cos ax} \hspace{2mm}{_2F_1}\left[\frac{1}{2}, \frac{1-n}{2},\frac{3}{2}, \cos^2 ax\right] + C,\ C \in \mathbb{R}$\\
+$\int \cos ax\ dx= \frac{1}{a} \sin ax + C,\ C \in \mathbb{R}$\\
+$\int \cos^2 ax\ dx = \frac{x}{2}+\frac{ \sin 2ax}{4a} + C,\ C \in \mathbb{R}$\\
+$\int \cos^3 ax dx = \frac{3 \sin ax}{4a}+\frac{ \sin 3ax}{12a} + C,\ C \in \mathbb{R}$\\
+%$\int \cos^p ax dx  = -\frac{1}{a(1+p)}{\cos^{1+p} ax} \times {_2F_1}\left[\frac{1+p}{2}, \frac{1}{2},\frac{3+p}{2}, \cos^2 ax \right] + C,\ C \in \mathbb{R}$\\
+$\int \cos x \sin x\ dx = \frac{1}{2}\sin^2 x + c_1 = -\frac{1}{2} \cos^2x + c_2 = -\frac{1}{4} \cos 2x + c_3 + C,\ C \in \mathbb{R}$\\
+$\int \cos ax \sin bx\ dx = \frac{\cos[(a-b) x]}{2(a-b)} -\frac{\cos[(a+b)x]}{2(a+b)} , a\ne b + C,\ C \in \mathbb{R}$\\
+$\int \sin^2 ax \cos bx\ dx = -\frac{\sin[(2a-b)x]}{4(2a-b)} + \frac{\sin bx}{2b} - \frac{\sin[(2a+b)x]}{4(2a+b)} + C,\ C \in \mathbb{R}$\\
+$\int \sin^2 x \cos x\ dx = \frac{1}{3} \sin^3 x + C,\ C \in \mathbb{R}$\\
+$\int \cos^2 ax \sin bx\ dx = \frac{\cos[(2a-b)x]}{4(2a-b)} - \frac{\cos bx}{2b} - \frac{\cos[(2a+b)x]}{4(2a+b)} + C,\ C \in \mathbb{R}$\\
+$\int \cos^2 ax \sin ax\ dx = -\frac{1}{3a}\cos^3{ax} + C,\ C \in \mathbb{R}$\\
+$\int \sin^2 ax \cos^2 bx\ dx = \frac{x}{4}-\frac{\sin 2ax}{8a}-\frac{\sin[2(a-b)x]}{16(a-b)}+ \frac{\sin 2bx}{8b}-\frac{\sin[2(a+b)x]}{16(a+b)} + C,\ C \in \mathbb{R}$\\
+$\int \sin^2 ax \cos^2 ax\ dx = \frac{x}{8}-\frac{\sin 4ax}{32a} + C,\ C \in \mathbb{R}$\\
+$\int \tan ax\ dx = -\frac{1}{a} \ln \cos ax + C,\ C \in \mathbb{R}$\\
+$\int \tan^2 ax\ dx = -x + \frac{1}{a} \tan ax + C,\ C \in \mathbb{R}$\\
+%$\int \tan^n ax\ dx = \frac{\tan^{n+1} ax }{a(1+n)} \times {_2}F_1\left( \frac{n+1}{2}, 1, \frac{n+3}{2}, -\tan^2 ax \right) + C,\ C \in \mathbb{R}$\\
+$\int \tan^3 ax dx = \frac{1}{a} \ln \cos ax + \frac{1}{2a}\sec^2 ax + C,\ C \in \mathbb{R}$\\
+$\int \sec x \ dx = \ln | \sec x + \tan x | = 2 \tanh^{-1} \left (\tan \frac{x}{2} \right) + C,\ C \in \mathbb{R}$\\
+$\int \sec^2 ax\ dx = \frac{1}{a} \tan ax + C,\ C \in \mathbb{R}$\\
+$\int \sec^3 x \ {dx} = \frac{1}{2} \sec x \tan x + \frac{1}{2}\ln | \sec x + \tan x | + C,\ C \in \mathbb{R}$\\
+$\int \sec x \tan x\ dx = \sec x + C,\ C \in \mathbb{R}$\\
+$\int \sec^2 x \tan x\ dx = \frac{1}{2} \sec^2 x + C,\ C \in \mathbb{R}$\\
+$\int \sec^n x \tan x \ dx = \frac{1}{n} \sec^n x + C, n\ne 0,\ C \in \mathbb{R}$\\
+$\int \csc x\ dx = \ln \left | \tan \frac{x}{2} \right|  = \ln | \csc x - \cot x| + C,\ C \in \mathbb{R}$\\
+$\int \csc^2 ax\ dx = -\frac{1}{a} \cot ax + C,\ C \in \mathbb{R}$\\
+$\int \csc^3 x\ dx = -\frac{1}{2}\cot x \csc x + \frac{1}{2} \ln | \csc x - \cot x | + C,\ C \in \mathbb{R}$\\
+$\int \csc^nx \cot x\ dx = -\frac{1}{n}\csc^n x + C, n\ne 0,\ C \in \mathbb{R}$\\
+$\int \sec x \csc x \ dx = \ln | \tan x | + C,\ C \in \mathbb{R}$
+
+\subsection{Funções Trigonométricas e Monomiais}
+
+$\int x \cos x \ dx = \cos x + x \sin x + C,\ C \in \mathbb{R}$\\
+$\int x \cos ax \ dx = \frac{1}{a^2} \cos ax + \frac{x}{a} \sin ax + C,\ C \in \mathbb{R}$\\
+$\int x^2 \cos x \ dx = 2 x \cos x + ( x^2 - 2) \sin x + C,\ C \in \mathbb{R}$\\
+$\int x^2 \cos ax \ dx = \frac{2 x \cos ax }{a^2} + \frac{ a^2 x^2 - 2  }{a^3} \sin ax + C,\ C \in \mathbb{R}$\\
+%$\int  x^n \cos x \ dx = -\frac{1}{2}(i)^{n+1} [ \Gamma(n+1, -ix) + (-1)^n \Gamma(n+1, ix)] + C,\ C \in \mathbb{R}$\\
+%$\int x^n \cos ax \ dx = \frac{1}{2}(ia)^{1-n}[ (-1)^n  \Gamma(n+1, -iax) \nonumber -\Gamma(n+1, ixa)] + C,\ C \in \mathbb{R}$\\
+$\int x \sin x\ dx = -x \cos x + \sin x + C,\ C \in \mathbb{R}$\\
+$\int x \sin ax\ dx = -\frac{x \cos ax}{a} + \frac{\sin ax}{a^2} + C,\ C \in \mathbb{R}$\\
+$\int x^2 \sin x\ dx = (2-x^2) \cos x + 2 x \sin x + C,\ C \in \mathbb{R}$\\
+$\int x^2 \sin ax\ dx =\frac{2-a^2x^2}{a^3}\cos ax +\frac{ 2 x \sin ax}{a^2} + C,\ C \in \mathbb{R}$\\
+%$\int x^n \sin x \ dx = -\frac{1}{2}(i)^n[ \Gamma(n+1, -ix)- (-1)^n\Gamma(n+1, -ix)] + C,\ C \in \mathbb{R}$\\
+$\int x \cos^2 x \ dx = \frac{x^2}{4}+\frac{1}{8}\cos 2x + \frac{1}{4} x \sin 2x + C,\ C \in \mathbb{R}$\\
+$\int x \sin^2 x \ dx = \frac{x^2}{4}-\frac{1}{8}\cos 2x - \frac{1}{4} x \sin 2x + C,\ C \in \mathbb{R}$\\
+$\int x \tan^2 x \ dx = -\frac{x^2}{2} + \ln \cos x + x \tan x + C,\ C \in \mathbb{R}$\\
+$\int x \sec^2 x \ dx = \ln \cos x + x \tan x + C,\ C \in \mathbb{R}$\\
+
+\subsection{Produtos de Funções Trigonométricas e Exponênciais}
+
+$\int e^x \sin x \ dx = \frac{1}{2}e^x (\sin x - \cos x)$\\
+$\int e^{bx} \sin ax\ dx = \frac{1}{a^2+b^2}e^{bx} (b\sin ax - a\cos ax)$\\
+$\int e^x \cos x\ dx = \frac{1}{2}e^x (\sin x + \cos x)$\\
+$\int e^{bx} \cos ax\ dx = \frac{1}{a^2 + b^2} e^{bx} ( a \sin ax + b \cos ax )$\\
+$\int x e^x \sin x\ dx = \frac{1}{2}e^x (\cos x - x \cos x + x \sin x)$\\
+$\int x e^x \cos x\ dx = \frac{1}{2}e^x (x \cos x - \sin x + x \sin x)$\\
+
+
+
+\iffalse
+\subsection{Integrais de Funções Hiperbólicas}
+
+$\int \cosh ax\ dx =\frac{1}{a} \sinh ax$\\
+%$\int e^{ax}  \cosh bx \ dx = \begin{cases} \displaystyle{\frac{e^{ax}}{a^2-b^2} }[ a \cosh bx - b \sinh bx ]  & a\ne b \\ \displaystyle{\frac{e^{2ax}}{4a} + \frac{x}{2}}  & a = b \end{cases}$\\
+$\int \sinh ax\ dx = \frac{1}{a} \cosh ax$\\
+%$\int e^{ax} \sinh bx \ dx = \begin{cases} \displaystyle{\frac{e^{ax}}{a^2-b^2} }[ -b \cosh bx + a \sinh bx ]  & a\ne b \\ \displaystyle{\frac{e^{2ax}}{4a} - \frac{x}{2}}  & a = b \end{cases}$\\
+$\int  \tanh ax\hspace{1.5pt} dx =\frac{1}{a} \ln \cosh ax$\\
+%$\int \cos ax \cosh bx\ dx = \frac{1}{a^2 + b^2} [ a \sin ax \cosh bx  + b \cos ax \sinh bx]$\\
+%$\int \cos ax \sinh bx\ dx = \frac{1}{a^2 + b^2} [ b \cos ax \cosh bx + a \sin ax \sinh bx ]$\\
+%$\int \sin ax \cosh bx \ dx = \frac{1}{a^2 + b^2} [ -a \cos ax \cosh bx + b \sin ax \sinh bx ]$\\
+%$\int \sin ax \sinh bx \ dx = \frac{1}{a^2 + b^2} [ b \cosh bx \sin ax - a \cos ax \sinh bx ]$\\
+%$\int \sinh ax \cosh ax dx= \frac{1}{4a} [ -2ax + \sinh 2ax ]$\\
+%$\int \sinh ax \cosh bx \ dx = \frac{1}{b^2-a^2} [ b \cosh bx \sinh ax - a \cosh ax \sinh bx ]$\\
+\fi
+%\rule{0.3\linewidth}{0.25pt}
+\rule{0.7\linewidth}{0.25pt}
+Ricardo Jesus
+\scriptsize
+\bibliographystyle{abstract}
+\bibliography{refFile}
+\end{multicols}
+\end{document}
