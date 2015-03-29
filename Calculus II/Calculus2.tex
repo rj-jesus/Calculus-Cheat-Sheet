@@ -1,0 +1,359 @@
+\documentclass[10pt,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{enumerate}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\Sf}{Sf}
+\DeclareMathOperator{\gr}{gr}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\Lagr}{\mathcal{L}}
+
+\pdfinfo{
+  /Title (Calculus 2.pdf)
+  /Creator (Ricardo Jesus)
+  /Producer (Ricardo Jesus)
+  /Author (Ricardo Jesus)
+  /Subject (Calculus)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+\pagestyle{empty}
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\underline{Cálculo \RNum{2}}} \\
+\end{center}
+
+\section{Transformadas de Laplace}
+
+Seja $f : [0, +\infty[ \rightarrow \mathbb{R}$, localmente integrável em $\mathbb{R}_0^+$.
+Então, a
+$$F(s) = \int_0^{+\infty} e^{-st} f(t)\ dt$$
+chama-se a \textit{Transformada de Laplace de }$f$ e denota-se por
+$$F(s) = \Lagr\{f(t)\},$$
+para todo o $s \in \mathbb{R}$ para o qual o integral acima converge.\\
+Chama-se \textit{Transformada Inversa de Laplace de } $f$ a
+$$f(t) = \Lagr^{-1}\{F(s)\}$$
+
+\subsection{Formulário}
+
+O formulário abaixo permite obter tanto as transformadas de Laplace de uma função $h(t)$ (lendo a tabela da esquerda para a direita), bem como as transformadas inversas de $H(s)$ (lendo a tabela da direita para a esquerda).\\
+No contexto da tabela sejam:
+$$F(s) = \Lagr\{f(t)\}(s),\ s > s_f$$
+$$G(s) = \Lagr\{g(t)\}(s),\ s > s_g$$
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{tabular}{|c|c|}
+\hline 
+$\mathbf{h(t) = \Lagr^{-1}\{H(s)\}}$ & $\mathbf{\Lagr\{h(t)\} = H(s)}$ \\
+\hline 
+$t^n, n \in \mathbb{N}_0$ & $\frac{n!}{s^{n+1}},\ s > 0$ \\ 
+\hline 
+$e^{at}, a \in \mathbb{R}$ & $\frac{1}{s-a},\ s > a$ \\ 
+\hline 
+$\sin(at), a \in \mathbb{R}$ & $\frac{a}{s^2 + a^2},\ s > 0$ \\
+\hline 
+$\cos(at), a \in \mathbb{R}$ & $\frac{s}{s^2 + a^2},\ s > 0$ \\
+\hline 
+$\sinh(at), a \in \mathbb{R}$ & $\frac{a}{s^2 - a^2},\ s > |a|$\\
+\hline
+$\cosh(at), a \in \mathbb{R}$ & $\frac{s}{s^2 - a^2},\ s > |a|$\\
+\hline
+$f(t) + g(t)$ & $F(s) + G(s),\ s > s_f, s_g$\\
+\hline 
+$\alpha f(t), \alpha \in \mathbb{R}$ & $\alpha F(s),\ s > s_f$ \\ 
+\hline 
+$e^{\lambda t} f(t), \lambda \in \mathbb{R}$ & $F(s-\lambda),\ s > s_f + \lambda$ \\ 
+\hline 
+$H_a(t)f(t-a), a > 0$ & $e^{-as}F(s),\ s > s_f$ \\
+\hline 
+$f(at), a > 0$ & $\frac{1}{a}F(\frac{s}{a}),\ s > as_f$ \\
+\hline 
+$t^n f(t), n \in \mathbb{N}$ & $(-1)^n F^(n)(s),\ s > \text{ordem exp. de } f$\\
+\hline
+$f'(t)$ & $sF(s) - f(0),$\\
+$ $ & $s > \text{ordem exp. de } f$\\
+\hline
+$f''(t)$ & $s^2 F(s) - sf(0) - f'(0),$\\
+$ $ & $s > \text{ordem exp. de } f, f'$\\
+\hline
+$f^{(n)}(t), n \in \mathbb{N}$ & $s^n F(s) - s^{n-1} f(0) - s^{n-2} f'(0) - $\\
+$ $ & $... - f^{(n-1)}(0),\ s > \text{ordem}$\\
+$ $ & $\text{exp. de } f, f', ..., f^{(n-1)}$\\
+\hline
+\end{tabular}
+\egroup
+
+\subsection{Transformada da Convuloção}
+
+Se $\exists \Lagr\{f(t)\} = F(s)$ e $\exists \Lagr\{g(t)\} = G(s)$, então:
+$$\exists \Lagr\{f\ast g\}(s) = F(s)G(s)$$
+$$\Rightarrow \Lagr^{-1}\{F(s)G(s)\}(t) = (f\ast g)(t),$$
+onde
+$$(f\ast g)(t) = \int_0^t f(x) g(t - x)\ dx$$
+\underline{Nota:} A operação de convuloção é comutativa, ou seja, $(f\ast g)(t) = (g\ast f)(t)$.
+
+\section{Equações Diferenciais Ordinárias}
+
+\textbf{Equação Diferencial Ordinária de ordem }$n$\textbf{:}
+$$F(x, y, y', ..., y^{(n)}) = 0$$
+ou
+$$y^{(n)} = F(x, y, y', ..., y^{(n-1)})$$
+
+\textbf{Integral Geral:}
+$$\Phi (x, y, C_1, C_2, ..., C_n) = 0$$
+ou
+$$y = \Phi (x, y, C_1, C_2, ..., C_n),\ C_i \in \mathbb{R},\ i = 1, 2, ..., n$$
+
+Onde $y = y(x)$, e o grau da equação diferencial é denotado por $n$.
+
+\subsection{Obter EDO a partir de Integral Geral}
+
+\begin{enumerate}
+\item Derivar $n$ vezes o integral geral, sendo que cada expressão derivada será uma equação do sistema abaixo
+\item Resolver o sistema de $n$ equações obtidas em ordem às constantes $C_1, C_2, ..., C_n$
+\item Substituir no integral geral as expressões obtidas para cada constante $C_1, C_2, ..., C_n$
+\item Obtém-se a equação diferencial ordinária pretendida
+\end{enumerate}
+
+\subsection{Equações Diferenciais de Primeira Ordem}
+
+\subsubsection{Equações de Variáveis Separáveis}
+
+$$y' = f(x)g(y)$$
+$$M_1(x)N_1(y)\ dy + M_2(x)N_2(y)\ dx = 0$$
+
+\begin{enumerate}
+\item Escrever a equação na forma $y'Q(y) = P(x)$, com $Q(y) = \frac{1}{g(y)}\ \left(\text{ou }Q(y) = \frac{N_1(y)}{N_2(y)}\right)$ e $P(x) = f(x)\ \left(\text{ou }P(x) = -\frac{M_2(x)}{M_1(x)}\right)$ e tomando nota de que restrições foram feitas ao domínio da expressão (por exemplo divisões por $g(y)$ ou $N_2(y)$)
+\item Primitivar a expressão obtida, ou seja, resolver $\int Q(y)\ dy = \int P(x)\ dx$
+\item Obter integral geral da EDO
+\item Verificar se as restrições que foram feitas no ponto 1. estão ou não contempladas no integral geral. Se sim, a solução geral é o integral geral. Se não essas expressões são equações singulares e a solução geral é dada pelo integral geral, juntamente com as soluções singulares
+\end{enumerate}
+
+\underline{Nota:} Equações diferenciais redutíveis a equações de variáveis separáveis são equações onde, através de uma mudança de variável, se consegue reduzir a equação a uma EDO de variáveis separáveis. Por exemplo a expressão
+$$y' = f(ax + by + c),\ a,\ b,\ c \in \mathbb{R}$$
+é redutível a e uma equação diferencial de variáveis separáveis através da substituição $u = ax + by + c,\ u = u(x)$. A partir daí, o método de resolução é o exposto acima, apenas no final se tem de substituir de volta $u$ por $ax + by + c$.
+
+\subsubsection{Equações Homogéneas}
+
+$$y' = \Phi \left(\frac{y}{x}\right)$$
+$$M(x, y)\ dx + N(x, y)\ dy = 0,$$
+onde $M,\ N$ são funções com o mesmo grau de homogeneidade.\\
+Se $f(tx, ty) = t^\alpha f(x, y),\ \alpha \in \mathbb{R}$ então $f$ diz-me homegénea de grau de homogeneidade $\alpha$.\\[0.25cm]
+
+Caso a equação esteja na forma $M(x, y)\ dx + N(x, y)\ dy = 0$
+\begin{enumerate}[a)]
+\item Determinar grau de homogeneidade $\alpha$ de $M$ e $N$
+\item Dividir a equação por $\frac{1}{x^\alpha}$
+\item Obter uma equação escrita na forma normal $y' = \Phi (\frac{y}{x})$
+\end{enumerate}
+\begin{enumerate}
+\item Aplicar a mudança de variável $u = \frac{y}{x}$
+\item Resolver a equação obtida (de variáveis separáveis)
+\item Substituir de volta $u$ por $\frac{y}{x}$
+\end{enumerate}
+
+\subsubsection{Equações Redutiveis a Homogénas ou de Variáveis Separáveis}
+
+$$y' = \Phi\left(\frac{a_1 x + b_1 y + c_1}{a_2 x + b_2 y + c_2}\right),$$
+$$a_i, b_i, c_i \in \mathbb{R},\ i = 1,\ 2,\ c_1 \neq 0 \text{ ou } c_2 \neq 0$$
+
+\begin{enumerate}
+\item Calcular $\lambda = \begin{vmatrix} a_1 & b_1 \\ a_2 & b_2 \end{vmatrix}$
+\item \begin{description}
+\item[$\lambda = 0$] A equação pode reduzir-se a uma de variáveis separáveis através da mudança de variável $z = a_1 x + b_1 y,\ z = z(x)$
+\item[$\lambda \neq 0$] A equação pode reduzir-se a uma homogénea através das mudanças de variáveis $x = u + h$ e $y = v + k$, onde $u,\ v$ são variáveis (e $v = v(u)$) e $h,\ k \in \mathbb{R}$.\\
+Resolver:
+$$\begin{cases} a_1 h + b_1 k + c_1 = 0\\a_2 h + b_2 k + c_2 = 0\end{cases}$$
+de forma a obter $h$ e $k$.
+Resolver a equação homogénea resultante da substituição, no final devolvedo as variáveis substituídas.
+\end{description}
+\end{enumerate}
+
+\subsection{Equações Lineares de 1ª Ordem}
+
+$$y' + P(x)y = Q(x)$$
+
+\subsubsection{\texorpdfstring{\RNum{1}}{TEXT} Método de Bernoulli}
+
+\begin{enumerate}
+\item Mudança de variável $y = uv,\ u = u(x),\ v = v(x)$. Obtém-se:
+$$u'v + uv' + P(x)uv = Q(x) \Leftrightarrow u'v + u(v' + P(x)v) = Q(x)$$
+\item Calcular \underline{uma} solução (portanto "sem constantes") de $v$ para
+$$v'+ P(x)v = 0$$
+\item Calcular a solução $u$ para $u'v = Q(x)$
+\item $y = uv$, onde $u$ e $v$ são as soluções encontradas antes
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{\RNum{2}}{TEXT} Método de Lagrange (variação de constante)}
+
+\begin{enumerate}
+\item Resolver a equação homogénea (que é de variáveis separáveis) associada
+$$y' + P(x)y = 0$$
+\item Na solução do ponto anterior surge uma constante. Considere-se a solução como tendo o aspecto $C H(x)$ onde $H(x) = e^{-\int P(x)\ dx}$ e $C$ é uma constante. Então, passa-se essa constante a uma função de $x$, ou seja, obtém-se $C(x)H(x)$
+\item Iguala-se a expressão obtida no ponto anterior à função $Q(x)$, mas considerando a parcela $C(x)$ como estando derivada. Ou seja, resolve-se $C'(x)H(x) = Q(x)$
+\item A solução geral será dada por $y = C(x)H(x) = H(x)\int H^{-1}(x)Q(x)\ dx$
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{\RNum{3}}{TEXT} Fator Integrante}
+
+\begin{enumerate}
+\item Determinar $I(x)$ tal que $I(x)=e^{\int P(x)\ dx}$
+\item Vem $(I(x)y)' = Q(x)I(x)$, logo, resolve-se $I(x)y = \int Q(x)I(x)\ dx$ para obter $y$
+\end{enumerate}
+
+\subsection{Equação Diferencial de Bernoulli}
+
+$$y' + P(x)y = Q(x)y^\alpha,\ \alpha \neq 0,\ \alpha \ne 1$$
+
+Para resolver uma equação de Bernoulli basta utilizar um dos métodos abaixo:
+\begin{itemize}
+\item Resolver pelo \textbf{Método de Bernoulli}
+\item Resolver pela mudança de variável $z = y^{1-\alpha}$, de onde se obtém uma equação de aspecto
+$$\frac{1}{1-\alpha}z' + P(x)z = Q(x)$$
+que não é mais do que uma equação linear de 1ª ordem, que portanto pode ser resolvida pelos processos expostos acima. No final, deve-se devolver as variaveis iniciais e deve-se confirmar (especialmente se $\alpha$ for positivo) que não se perderam soluções.
+\end{itemize}
+
+\subsection{Soluções de Problemas de Cauchy}
+
+Visto que as soluções obtidas para EDOs são uma família de funções, de forma a se determinar uma solução particular é necessário conhecer valores que permitam inferir sobre que função da família de soluções obtida é a que se procura.\\
+Conhecendo-se esses valores, o processo para obtenção da solução particular pretendida é o exposto abaixo:
+\begin{enumerate}
+\item Determinar a solução geral da EDO em estudo
+\item A partir das condições iniciais, determinar o valor das constantes que figuram na solução geral
+\item A solução particular pretendida é a solução geral onde as suas constantes tomam o valor determinado acima
+\end{enumerate}
+
+\subsection{Equações Diferenciais de Ordem \texorpdfstring{$\mathbf{n,\ n \ge 1}$}{TEXT}}
+
+$$y^{(n)} + a_1 y^{(n-1)} + ... + a_n y = Q(x),\ a_i \in \mathbb{R},\ i = 1, 2, ..., n$$
+
+As soluções de equações diferenciais de ordem $n$ têm o aspecto $y_g = y_h + y_p$. Assim, para calcular $y_g$ podem-se seguir as etapas abaixo.
+\begin{enumerate}
+\item Calcular as soluções do polinómio característico da equação, ou seja, resolver:
+$$\lambda^n + a_1 \lambda^{n-1} + a_2 \lambda^{n-2} + ... + a_n = 0$$
+\item A cada solução $\lambda_i$ de multiplicidade $s$ faz-se corresponder uma equação $y_i$, de forma a se obter o sistema fundamental $\{y_1, y_2, ..., y_n\}$. Cada equação $y_i$ do sistema dependende de se $\lambda_i$ é uma raiz real ou um par de raízes complexas da equação característica:
+\begin{description}
+\item[$\lambda_i \in \mathbb{R}$]
+$$y_{i_1} = e^{\lambda_i x},\ y_{i_2} = x e^{\lambda_i x}, ...,\ y_{i_s} = x^{s-1} e^{\lambda_i x}$$
+\item[$\lambda_i = \alpha \pm i \beta$]
+$$y_{i_1} = x^{s-1} e^{\alpha x} \cos{\beta x},\ y_{i_2} = x^{s-1} e^{\alpha x} \sin{\beta x}$$
+\end{description}
+\item A solução da equação homogénea associada é tal que
+$$y_h = C_1 y_1 + C_2 y_2 + ... + C_n y_n,\ C_i \in \mathbb{R},\ i = 1,\ 2, ...,\ n$$
+Caso se esteja perante um caso em que $Q(x) = 0$, então a solução geral da equação linear corresponde a $y_h$. Caso contrário, deve-se calcular $y_p$ (já que $y_g = y_h + y_p$). Para isso podem-se utilizar dois métodos, o de \textbf{Lagrange} e o dos \textbf{Coeficientes Indeterminados}, que são expostos nas secções seguintes.
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{\RNum{1}}{TEXT} Método da Variação das Constantes (de Lagrange)}
+
+\begin{enumerate}
+\item Começar por obter o sistema fundamental de soluções da equação diferencial homogénea associada (ver secção anterior)
+\item A solução geral da equação completa terá a forma
+$$y_g = C_1(x) y_1 + C_2(x) y_2 + ... + C_n(x) y_n,\ i = 1,\ 2, ...,\ n$$
+Para obter os valores de $C_1(x),\ C_2(x), ...,\ C_n(x)$ resolve-se o sistema de equações
+$$\begin{cases}
+C_1'(x)y_1 + C_2'(x)y_2 + ... + C_n'(x)y_n = 0\\
+C_1'(x)y_1' + C_2'(x)y_2' + ... + C_n'(x)y_n' = 0\\
+...\\
+C_1'(x)y_1^{(n-1)} + C_2'(x)y_2^{(n-1)} + ... + C_n'(x)y_n^{(n-1)} = Q(x)\\
+\end{cases}$$
+Possível método de resolução do sistema (\textbf{Regra de Cramer}):
+\begin{enumerate}
+\item Calcular
+$$\delta =
+\begin{vmatrix}
+y_1 & y_2 & ... & y_n \\
+y_1' & y_2' & ... & y_n' \\
+... \\
+y_1^{(n-1)} & y_2^{(n-1)} & ... & y_n^{(n-1)}
+\end{vmatrix}$$
+\item Calcular $\delta_{C_i'(x)},\ i = 1,\ 2, ...,\ n$, ou seja, para cada $C_i'(x)$ substituir a coluna $i$ do determinante anterior pela coluna $\left[\begin{matrix}0\\0\\...\\Q(x)\end{matrix}\right]$
+\item Calcular cada $C_i'(x),\ i = 1,\ 2, ...,\ n$ através de
+$$C_i'(x) = \frac{\delta_{C_i'(x)}}{\delta}$$
+\item Calcular cada $C_i(x),\ i = 1,\ 2, ...,\ n$, através de
+$$C_i(x) = \int C_i'(x)\ dx$$
+\item O resultado final é dado por
+$$y_g = C_1(x)y_1 + C_2y_2 + ... + C_ny_n$$
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{\RNum{2}}{TEXT} Método dos Coeficientes Indeterminados}
+
+\begin{enumerate}
+\item Começar por obter o sistema fundamental de soluções da equação diferencial homogénea associada (ver secção anterior)
+\item A solução particular que se procura é dada em função do aspecto de $Q(x)$
+\begin{description}
+\item[$Q(x) = e^{\alpha x} M_n(x)$] $M_n(x)$ é um polinómio de ordem $n$. Considere-se que $s$ denota a multiplicidade da raíz real $\lambda$ em que $\lambda = \alpha$ (caso essa raíz não exista, $s = 0$). Então, a solução particular da equação terá o aspecto
+$$y_p = x^s e^{\alpha x} (A_nx^n + A_{n-1}x^{n-1} + ... + A_0)$$
+\item[$Q(x) = e^{\alpha x}(M_n(x)\cos{\beta x} + N_n(x)\sin{\beta x}$] $M_n(x),\ N_n(x)$ são polinómios de ordem $n$. Se existe alguma raíz $\lambda$ da equação característica tal que $\lambda = \alpha \pm i\beta$, então seja $s$ a multiplicidade dessa raíz. Caso contrário $s = 0$. Neste caso, a equação particular da equação terá o aspecto
+$$y_p = x^s e^{\alpha x}((A_nx^n + A_{n-1}x^{n-1} + ... + A_0)\cos{\beta x} +$$
+$$(B_nx^n + B_{n-1}x^{n-1} + ... + B_0)\sin{\beta x})$$
+\end{description}
+\item Após ter sido determinado o aspecto que a solução particular deve ter, resolve-se a equação inicial substituindo-se $y$ "pelo aspecto" que se determinou acima, ou seja, resolve-se
+$$y_p^{(n)} + a_1 y_p^{(n-1)} + ... + a_n y_p = Q(x)$$
+de forma a se obterem os valores de $A_i$ e $B_i,\ i = 1,\ 2, ...,\ n$ das equações acima. Assim, obtem-se a equação particular para a equação diferencial a resolver
+\item Como $y_g = y_h + y_p$ e já foram calculados $y_h$ e $y_p$, a solução geral da equação completa é apenas a soma destas equações ($y_h$ e $y_p$)
+\end{enumerate}
+
+\hfill Ricardo Jesus \\
+\hfill profª Vera Kharlamova \\
+%\rule{0.3\linewidth}{0.25pt}
+%\scriptsize
+%\bibliographystyle{abstract}
+\bibliography{refFile}
+\end{multicols}
+\end{document}
