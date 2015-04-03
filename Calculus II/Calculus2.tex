@@ -157,7 +157,7 @@ $$y^{(n)} = F(x, y, y', ..., y^{(n-1)})$$
 \textbf{Integral Geral:}
 $$\Phi (x, y, C_1, C_2, ..., C_n) = 0$$
 ou
-$$y = \Phi (x, y, C_1, C_2, ..., C_n),\ C_i \in \mathbb{R},\ i = 1, 2, ..., n$$
+$$y = \Phi (x, C_1, C_2, ..., C_n),\ C_i \in \mathbb{R},\ i = 1, 2, ..., n$$
 
 Onde $y = y(x)$, e o grau da equação diferencial é denotado por $n$.
 
@@ -198,7 +198,7 @@ Se $f(tx, ty) = t^\alpha f(x, y),\ \alpha \in \mathbb{R}$ então $f$ diz-me home
 Caso a equação esteja na forma $M(x, y)\ dx + N(x, y)\ dy = 0$
 \begin{enumerate}[a)]
 \item Determinar grau de homogeneidade $\alpha$ de $M$ e $N$
-\item Dividir a equação por $\frac{1}{x^\alpha}$
+\item Multiplicar a equação por $\frac{1}{x^\alpha}$
 \item Obter uma equação escrita na forma normal $y' = \Phi (\frac{y}{x})$
 \end{enumerate}
 \begin{enumerate}
@@ -220,7 +220,7 @@ $$a_i, b_i, c_i \in \mathbb{R},\ i = 1,\ 2,\ c_1 \neq 0 \text{ ou } c_2 \neq 0$$
 Resolver:
 $$\begin{cases} a_1 h + b_1 k + c_1 = 0\\a_2 h + b_2 k + c_2 = 0\end{cases}$$
 de forma a obter $h$ e $k$.
-Resolver a equação homogénea resultante da substituição, no final devolvedo as variáveis substituídas.
+Resolver a equação homogénea resultante da substituição, no final devolvendo as variáveis substituídas.
 \end{description}
 \end{enumerate}
 
@@ -326,6 +326,7 @@ y_1^{(n-1)} & y_2^{(n-1)} & ... & y_n^{(n-1)}
 $$C_i'(x) = \frac{\delta_{C_i'(x)}}{\delta}$$
 \item Calcular cada $C_i(x),\ i = 1,\ 2, ...,\ n$, através de
 $$C_i(x) = \int C_i'(x)\ dx$$
+\underline{Nota:} Não esquecer a constante $K_i$ que surge na primitivação.
 \item O resultado final é dado por
 $$y_g = C_1(x)y_1 + C_2y_2 + ... + C_ny_n$$
 \end{enumerate}
@@ -349,8 +350,9 @@ de forma a se obterem os valores de $A_i$ e $B_i,\ i = 1,\ 2, ...,\ n$ das equa�
 \item Como $y_g = y_h + y_p$ e já foram calculados $y_h$ e $y_p$, a solução geral da equação completa é apenas a soma destas equações ($y_h$ e $y_p$)
 \end{enumerate}
 
-\hfill Ricardo Jesus \\
-\hfill profª Vera Kharlamova \\
+\vfill
+\hfill Ricardo Jesus 
+%\clearpage
 %\rule{0.3\linewidth}{0.25pt}
 %\scriptsize
 %\bibliographystyle{abstract}
