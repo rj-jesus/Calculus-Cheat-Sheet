@@ -98,31 +98,31 @@ $$G(s) = \Lagr\{g(t)\}(s),\ s > s_g$$
 \bgroup
 \def\arraystretch{1.5}
 \begin{tabular}{|c|c|}
-\hline 
+\hline
 $\mathbf{h(t) = \Lagr^{-1}\{H(s)\}}$ & $\mathbf{\Lagr\{h(t)\} = H(s)}$ \\
-\hline 
-$t^n, n \in \mathbb{N}_0$ & $\frac{n!}{s^{n+1}},\ s > 0$ \\ 
-\hline 
-$e^{at}, a \in \mathbb{R}$ & $\frac{1}{s-a},\ s > a$ \\ 
-\hline 
+\hline
+$t^n, n \in \mathbb{N}_0$ & $\frac{n!}{s^{n+1}},\ s > 0$ \\
+\hline
+$e^{at}, a \in \mathbb{R}$ & $\frac{1}{s-a},\ s > a$ \\
+\hline
 $\sin(at), a \in \mathbb{R}$ & $\frac{a}{s^2 + a^2},\ s > 0$ \\
-\hline 
+\hline
 $\cos(at), a \in \mathbb{R}$ & $\frac{s}{s^2 + a^2},\ s > 0$ \\
-\hline 
+\hline
 $\sinh(at), a \in \mathbb{R}$ & $\frac{a}{s^2 - a^2},\ s > |a|$\\
 \hline
 $\cosh(at), a \in \mathbb{R}$ & $\frac{s}{s^2 - a^2},\ s > |a|$\\
 \hline
 $f(t) + g(t)$ & $F(s) + G(s),\ s > s_f, s_g$\\
-\hline 
-$\alpha f(t), \alpha \in \mathbb{R}$ & $\alpha F(s),\ s > s_f$ \\ 
-\hline 
-$e^{\lambda t} f(t), \lambda \in \mathbb{R}$ & $F(s-\lambda),\ s > s_f + \lambda$ \\ 
-\hline 
+\hline
+$\alpha f(t), \alpha \in \mathbb{R}$ & $\alpha F(s),\ s > s_f$ \\
+\hline
+$e^{\lambda t} f(t), \lambda \in \mathbb{R}$ & $F(s-\lambda),\ s > s_f + \lambda$ \\
+\hline
 $H_a(t)f(t-a), a > 0$ & $e^{-as}F(s),\ s > s_f$ \\
-\hline 
+\hline
 $f(at), a > 0$ & $\frac{1}{a}F(\frac{s}{a}),\ s > as_f$ \\
-\hline 
+\hline
 $t^n f(t), n \in \mathbb{N}$ & $(-1)^n F^(n)(s),\ s > \text{ordem exp. de } f$\\
 \hline
 $f'(t)$ & $sF(s) - f(0),$\\
@@ -138,14 +138,14 @@ $ $ & $\text{exp. de } f, f', ..., f^{(n-1)}$\\
 \end{tabular}
 \egroup
 
-\subsection{Transformada da Convuloção}
+\subsection{Transformada da Convolução}
 
 Se $\exists \Lagr\{f(t)\} = F(s)$ e $\exists \Lagr\{g(t)\} = G(s)$, então:
 $$\exists \Lagr\{f\ast g\}(s) = F(s)G(s)$$
 $$\Rightarrow \Lagr^{-1}\{F(s)G(s)\}(t) = (f\ast g)(t),$$
 onde
 $$(f\ast g)(t) = \int_0^t f(x) g(t - x)\ dx$$
-\underline{Nota:} A operação de convuloção é comutativa, ou seja, $(f\ast g)(t) = (g\ast f)(t)$.
+\underline{Nota:} A operação de convolução é comutativa, ou seja, $(f\ast g)(t) = (g\ast f)(t)$.
 
 \section{Equações Diferenciais Ordinárias}
 
@@ -181,19 +181,19 @@ $$M_1(x)N_1(y)\ dy + M_2(x)N_2(y)\ dx = 0$$
 \item Escrever a equação na forma $y'Q(y) = P(x)$, com $Q(y) = \frac{1}{g(y)}\ \left(\text{ou }Q(y) = \frac{N_1(y)}{N_2(y)}\right)$ e $P(x) = f(x)\ \left(\text{ou }P(x) = -\frac{M_2(x)}{M_1(x)}\right)$ e tomando nota de que restrições foram feitas ao domínio da expressão (por exemplo divisões por $g(y)$ ou $N_2(y)$)
 \item Primitivar a expressão obtida, ou seja, resolver $\int Q(y)\ dy = \int P(x)\ dx$
 \item Obter integral geral da EDO
-\item Verificar se as restrições que foram feitas no ponto 1. estão ou não contempladas no integral geral. Se sim, a solução geral é o integral geral. Se não essas expressões são equações singulares e a solução geral é dada pelo integral geral, juntamente com as soluções singulares
+\item Verificar se as restrições que foram feitas no ponto 1 estão ou não contempladas no integral geral. Se sim, a solução geral é o integral geral. Se não essas expressões são equações singulares e a solução geral é dada pelo integral geral, juntamente com as soluções singulares
 \end{enumerate}
 
 \underline{Nota:} Equações diferenciais redutíveis a equações de variáveis separáveis são equações onde, através de uma mudança de variável, se consegue reduzir a equação a uma EDO de variáveis separáveis. Por exemplo a expressão
 $$y' = f(ax + by + c),\ a,\ b,\ c \in \mathbb{R}$$
-é redutível a e uma equação diferencial de variáveis separáveis através da substituição $u = ax + by + c,\ u = u(x)$. A partir daí, o método de resolução é o exposto acima, apenas no final se tem de substituir de volta $u$ por $ax + by + c$.
+é redutível a uma equação diferencial de variáveis separáveis através da substituição $u = ax + by + c,\ u = u(x)$. A partir daí, o método de resolução é o exposto acima, apenas no final se tem de substituir de volta $u$ por $ax + by + c$.
 
 \subsubsection{Equações Homogéneas}
 
 $$y' = \Phi \left(\frac{y}{x}\right)$$
 $$M(x, y)\ dx + N(x, y)\ dy = 0,$$
 onde $M,\ N$ são funções com o mesmo grau de homogeneidade.\\
-Se $f(tx, ty) = t^\alpha f(x, y),\ \alpha \in \mathbb{R}$ então $f$ diz-me homegénea de grau de homogeneidade $\alpha$.\\[0.25cm]
+Se $f(tx, ty) = t^\alpha f(x, y),\ \alpha \in \mathbb{R}$ então $f$ diz-me homogénea de grau de homogeneidade $\alpha$.\\[0.25cm]
 
 Caso a equação esteja na forma $M(x, y)\ dx + N(x, y)\ dy = 0$
 \begin{enumerate}[a)]
@@ -207,7 +207,7 @@ Caso a equação esteja na forma $M(x, y)\ dx + N(x, y)\ dy = 0$
 \item Substituir de volta $u$ por $\frac{y}{x}$
 \end{enumerate}
 
-\subsubsection{Equações Redutiveis a Homogénas ou de Variáveis Separáveis}
+\subsubsection{Equações Redutiveis a Homogéneas ou de Variáveis Separáveis}
 
 $$y' = \Phi\left(\frac{a_1 x + b_1 y + c_1}{a_2 x + b_2 y + c_2}\right),$$
 $$a_i, b_i, c_i \in \mathbb{R},\ i = 1,\ 2,\ c_1 \neq 0 \text{ ou } c_2 \neq 0$$
@@ -265,7 +265,7 @@ Para resolver uma equação de Bernoulli basta utilizar um dos métodos abaixo:
 \item Resolver pelo \textbf{Método de Bernoulli}
 \item Resolver pela mudança de variável $z = y^{1-\alpha}$, de onde se obtém uma equação de aspecto
 $$\frac{1}{1-\alpha}z' + P(x)z = Q(x)$$
-que não é mais do que uma equação linear de 1ª ordem, que portanto pode ser resolvida pelos processos expostos acima. No final, deve-se devolver as variaveis iniciais e deve-se confirmar (especialmente se $\alpha$ for positivo) que não se perderam soluções.
+que não é mais do que uma equação linear de 1ª ordem, que portanto pode ser resolvida pelos processos expostos acima. No final, deve-se devolver as variáveis iniciais e deve-se confirmar (especialmente se $\alpha$ for positivo) que não se perderam soluções.
 \end{itemize}
 
 \subsection{Soluções de Problemas de Cauchy}
@@ -286,7 +286,7 @@ As soluções de equações diferenciais de ordem $n$ têm o aspecto $y_g = y_h 
 \begin{enumerate}
 \item Calcular as soluções do polinómio característico da equação, ou seja, resolver:
 $$\lambda^n + a_1 \lambda^{n-1} + a_2 \lambda^{n-2} + ... + a_n = 0$$
-\item A cada solução $\lambda_i$ de multiplicidade $s$ faz-se corresponder uma equação $y_i$, de forma a se obter o sistema fundamental $\{y_1, y_2, ..., y_n\}$. Cada equação $y_i$ do sistema dependende de se $\lambda_i$ é uma raiz real ou um par de raízes complexas da equação característica:
+\item A cada solução $\lambda_i$ de multiplicidade $s$ faz-se corresponder uma equação $y_i$, de forma a se obter o sistema fundamental $\{y_1, y_2, ..., y_n\}$. Cada equação $y_i$ do sistema depende de se $\lambda_i$ é uma raíz real ou um par de raízes complexas da equação característica:
 \begin{description}
 \item[$\lambda_i \in \mathbb{R}$]
 $$y_{i_1} = e^{\lambda_i x},\ y_{i_2} = x e^{\lambda_i x}, ...,\ y_{i_s} = x^{s-1} e^{\lambda_i x}$$
@@ -346,12 +346,12 @@ $$(B_nx^n + B_{n-1}x^{n-1} + ... + B_0)\sin{\beta x})$$
 \end{description}
 \item Após ter sido determinado o aspecto que a solução particular deve ter, resolve-se a equação inicial substituindo-se $y$ "pelo aspecto" que se determinou acima, ou seja, resolve-se
 $$y_p^{(n)} + a_1 y_p^{(n-1)} + ... + a_n y_p = Q(x)$$
-de forma a se obterem os valores de $A_i$ e $B_i,\ i = 1,\ 2, ...,\ n$ das equações acima. Assim, obtem-se a equação particular para a equação diferencial a resolver
+de forma a se obterem os valores de $A_i$ e $B_i,\ i = 1,\ 2, ...,\ n$ das equações acima. Assim, obtém-se a equação particular para a equação diferencial a resolver
 \item Como $y_g = y_h + y_p$ e já foram calculados $y_h$ e $y_p$, a solução geral da equação completa é apenas a soma destas equações ($y_h$ e $y_p$)
 \end{enumerate}
 
 \vfill
-\hfill Ricardo Jesus 
+\hfill Ricardo Jesus
 %\clearpage
 %\rule{0.3\linewidth}{0.25pt}
 %\scriptsize
