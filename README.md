@@ -8,4 +8,8 @@ Was checked and should be mistakes free. Should be complete and usable.
 As I get some free time I might translate it to english.
 
 ### Calculus II
-Still writing most of it. After it is completed and checked I might also translate it to english.
+~~Still writing most of it.~~ Half way through. Next big update should come by the end of this term. After it is completed and checked I might also translate it to english.
+
+Thanks to Fábio Maia got some pretty dumb typos fixed. Thanks.
+
+Ricardo Jesus
