@@ -137,7 +137,7 @@ $ $ & $\text{exp. de } f, f', ..., f^{(n-1)}$\\
 \hline
 $(f*g)(t)$ & $F(s)G(s),\ s > \text{ordem exp. de }f,\ g$\\
 \hline
-$\int_0^t f(\tau)\ d\tau$ & $\frac{F(s)}{s},\ s > 0,\ \text{ordem exp. de }f$\\
+$\int\limits_0^t f(\tau)\ d\tau$ & $\frac{F(s)}{s},\ s > 0,\ \text{ordem exp. de }f$\\
 \hline
 \end{tabular}
 \egroup
@@ -148,7 +148,7 @@ Se $\exists \Lagr\{f(t)\} = F(s)$ e $\exists \Lagr\{g(t)\} = G(s)$, então:
 $$\exists \Lagr\{f\ast g\}(s) = F(s)G(s)$$
 $$\Rightarrow \Lagr^{-1}\{F(s)G(s)\}(t) = (f\ast g)(t),$$
 onde
-$$(f\ast g)(t) = \int_0^t f(x) g(t - x)\ dx$$
+$$(f\ast g)(t) = \int\limits_0^t f(\tau) g(t - \tau)\ d\tau$$
 \underline{Nota:} A operação de convolução é comutativa, ou seja, $(f\ast g)(t) = (g\ast f)(t)$.
 
 \section{Equações Diferenciais Ordinárias}
@@ -354,12 +354,381 @@ de forma a se obterem os valores de $A_i$ e $B_i,\ i = 1,\ 2, ...,\ n$ das equa�
 \item Como $y_g = y_h + y_p$ e já foram calculados $y_h$ e $y_p$, a solução geral da equação completa é apenas a soma destas equações ($y_h$ e $y_p$)
 \end{enumerate}
 
+\section{Séries Numéricas}
+
+Seja $(a_n)_{n \in \mathbb{N}}$ uma sucessão de números reais ou complexos. À sucessão formada pelas adições sucessivas dos seus $n$ termos $a_1, a_2, a_3, ..., a_n$ chama-se sucessão das somas parciais de ordem $n$:
+
+$$S_n = a_1 + a_2 + a_3 + ... + a_n = \sum\limits_{k=1}^n a_k$$
+
+Chama-se série (ou série infinita) à soma
+
+$$a_1 + a_2 + a_3 + ... + a_n + ... = \sum\limits_{n=1}^{+\infty} a_n$$
+
+Uma série pode ser
+\begin{description}
+\item[convergente] $\exists S \in \mathbb{C}: \lim\limits_{n \to +\infty} S_n = S$, e escreve-se $S = \sum\limits_{n=1}^{+\infty} a_n$
+\item[divergente] $\nexists S \in \mathbb{C}: \lim\limits_{n \to +\infty} S_n = S$  ou $S = \pm \infty$
+\end{description}
+
+\subsection{Propriedades}
+
+\begin{itemize}
+\item Se $\sum\limits_{n=1}^{+\infty} a_n$ e $\sum\limits_{n=1}^{+\infty} b_n$ são \underline{séries convergentes} e $\alpha,\ \beta \in \mathbb{R}$, então $\sum\limits_{n=1}^{+\infty} (\alpha a_n \pm \beta b_n)$ não só é uma \underline{série convergente} como também
+
+$$\sum\limits_{n=1}^{+\infty} \left(\alpha a_n \pm \beta b_n\right) = \alpha \sum\limits_{n=1}^{+\infty} a_n \pm \beta  \sum\limits_{n=1}^{+\infty} b_n$$
+
+\item Se $\sum\limits_{n=1}^{+\infty} a_n$ é \underline{convergente} e $\sum\limits_{n=1}^{+\infty} b_n$ \underline{divergente}, então $\sum\limits_{n=1}^{+\infty}( a_n \pm b_n)$ é uma \underline{série divergente}
+
+\item Se $\sum\limits_{n=1}^{+\infty} a_n$ é convergente, então $\sum\limits_{n=p}^{+\infty} a_n$ é convergente ($\forall p \in \mathbb{R}$)
+
+\item Se $\sum\limits_{n=1}^{+\infty} a_n$ e $\sum\limits_{n=1}^{+\infty} b_n$ são \underline{séries divergentes}, então \underline{nada se pode concluir} quanto à convergência de $\sum\limits_{n=1}^{+\infty}( a_n \pm b_n)$
+\end{itemize}
+
+\subsection{Séries Geométricas}
+
+$$\sum\limits_{n=p}^{+\infty} r^n,\ p \in \mathbb{R}$$
+
+\begin{description}
+\item[$\mathbf{\left| r \right| < 1}$] \underline{Convergência} - $\sum\limits_{n=p}^{+\infty} r^n = \frac{r^p}{1-r}$
+\item[$\mathbf{\left| r \right| \geq 1}$] \underline{Divergência}
+\end{description}
+
+\subsection{Séries Telescópicas (ou de Mengoli ou Redutiveis)}
+
+$$\sum\limits_{n=1}^{+\infty} (a_n - a_{n+p}), p \in \mathbb{N}$$
+
+Se $\exists A \in \mathbb{N}: \lim\limits_{n \to +\infty} (a_{n+1} + a_{n+2} + ... + a_{n+k}) = A$
+$\Rightarrow S  = \sum\limits_{n=1}^{+\infty} (a_n - a_{n+p}) = a_1 + a_2 + ... + a_k - A$
+
+
+$$\sum\limits_{n=1}^{+\infty} (a_{n+p} - a_n), p \in \mathbb{N}$$
+
+Se $\exists A \in \mathbb{N}: \lim\limits_{n \to +\infty} (a_{n+1} + a_{n+2} + ... + a_{n+k}) = A$
+$\Rightarrow S  = \sum\limits_{n=1}^{+\infty} (a_{n+p} - a_n) = A - (a_1 + a_2 + ... + a_k)$
+
+\subsection{Séries Harmónicas de ordem p (ou de Dirichlet)}
+
+$$
+\sum\limits_{n=1}^{+\infty} \frac{1}{n^p},\ p \in \mathbb{R}
+\begin{cases}
+\mathbf{p > 1} &- \text{Convergência}\\
+\mathbf{p \leq 1} &- \text{Divergência}
+\end{cases}
+$$
+
+\subsection{Série Harmónica alternada de ordem p}
+
+$$
+\sum\limits_{n=1}^{+\infty} (-1)^n \frac{1}{n^p},\ p \in \mathbb{R}
+\begin{cases}
+\mathbf{p > 1} &- \text{Convergência absoluta}\\
+\mathbf{0 < p \leq 1} &- \text{Convergência simples}\\
+\mathbf{p \leq 0} &- \text{Divergência}
+\end{cases}
+$$
+
+\subsection{Séries de termos não negativos}
+
+$$\sum\limits_{n=1}^{+\infty} a_n,\ a_n \geq 0$$
+$\text{Convergência} \Leftrightarrow \exists M \in \mathbb{R}_0^+: (S_n)_{n \in \mathbb{N}} \leq M$
+
+\subsection{Séries de termos quaisquer}
+
+$$\sum\limits_{n=1}^{+\infty} a_n$$
+
+Seja $\sum\limits_{n=1}^{+\infty} a_n$ convergente. Então, se
+
+$\sum\limits_{n=1}^{+\infty} \left| a_n\right| \text{ Convergente} \Rightarrow \sum\limits_{n=1}^{+\infty} a_n - \text{\underline{Absolutamente convergente}}$
+
+$\sum\limits_{n=1}^{+\infty} \left| a_n\right| \text{ Divergente} \Rightarrow \sum\limits_{n=1}^{+\infty} a_n - \text{\underline{Simplesmente convergente}}$
+
+\subsection{Critérios de Convergência/Divergência}
+
+\subsubsection{Critério do Integral}
+
+Seja \underline{$f: [k, +\infty[ \rightarrow [0, +\infty[,\ k \in \mathbb{N}$} um função \underline{contínua}, \underline{monótona decrescente} e $f(n) = a_n,\ \forall n \in \mathbb{N}$, então $$\sum\limits_{n=k}^{+\infty} a_n \text{ Converge} \Leftrightarrow \int\limits_k^{+\infty} f(x)\ dx \text{ Converge}$$
+
+\subsubsection{Critério de Comparação}
+
+Sejam $\sum\limits_{n=1}^{+\infty} a_n$ e $\sum\limits_{n=1}^{+\infty} b_n$ séries numéricas. Se $\exists p \in \mathbb{N}: \forall n \geq p \Rightarrow 0 \leq a_n \leq b_n$, então
+
+$$\sum\limits_{n=1}^{+\infty} b_n \text{ Converge} \Rightarrow \sum\limits_{n=1}^{+\infty} a_n \text{ Converge}$$
+$$\sum\limits_{n=1}^{+\infty} a_n \text{ Diverge} \Rightarrow \sum\limits_{n=1}^{+\infty} b_n \text{ Diverge}$$
+
+\subsubsection{Critério de Comparação por passagem ao limite}
+
+Se $\exists p \in \mathbb{N}: \forall n \geq p \Rightarrow a_n \geq 0 \text{ e } b_n > 0$ e $\exists\lim\limits_{n \to +\infty} \frac{a_n}{b_n} = L$, então
+
+\begin{description}
+\item[$\mathbf{L \in \mathbb{R}^+}$] $\sum\limits_{n=1}^{+\infty} a_n$ e $\sum\limits_{n=1}^{+\infty} b_n$ têm a mesma natureza
+\item[$\mathbf{L = 0}$] $\sum\limits_{n=1}^{+\infty} b_n \text{ Converge} \Rightarrow \sum\limits_{n=1}^{+\infty} a_n \text{ Converge}$
+\item[$\mathbf{L = +\infty}$] $\sum\limits_{n=1}^{+\infty} b_n \text{ Diverge} \Rightarrow \sum\limits_{n=1}^{+\infty} a_n \text{ Diverge}$
+\end{description}
+
+\subsubsection{Critério da Razão (ou D'Alembert)}
+
+Seja $\lim\limits_{n \to +\infty} \left| \frac{a_{n+1}}{a_n} \right| = L$, então
+
+\begin{description}
+\item[$\mathbf{L < 1}$] $\sum\limits_{n=1}^{+\infty} a_n$ Converge (absolutamente)
+\item[$\mathbf{L > 1}$] $\sum\limits_{n=1}^{+\infty} a_n$ Diverge
+\item[$\mathbf{L = 1}$] $\sum\limits_{n=1}^{+\infty} a_n$ Este teste nada permite concluir
+\end{description}
+
+\subsubsection{Critério da Raíz (ou de Cauchy)}
+
+Seja $\lim\limits_{n \to +\infty} \sqrt[n]{\left| a_n\right|} = L$, então
+
+\begin{description}
+\item[$\mathbf{L < 1}$] $\sum\limits_{n=1}^{+\infty} a_n$ Converge (absolutamente)
+\item[$\mathbf{L > 1}$] $\sum\limits_{n=1}^{+\infty} a_n$ Diverge
+\item[$\mathbf{L = 1}$] $\sum\limits_{n=1}^{+\infty} a_n$ Este teste nada permite concluir
+\end{description}
+
+\subsubsection{Critério de Leibniz}
+
+$\sum\limits_{n=1}^{+\infty} a_n,\ a_n \forall n \in \mathbb{N}$ é simplesmente convergente se
+
+$
+\begin{cases}
+\lim\limits_{n \to +\infty} a_n = 0\\
+\left( a_n\right)_{n \in \mathbb{N}} \text{ é monótona decrescente, } a_{n+1} \leq a_n,\ \forall n \in \mathbb{N}
+\end{cases}
+$
+
+\subsection{Teorema de Riemann}
+
+Para qualquer série de termos quaisquer simplesmente convergente e para qualquer constante $C \in \mathbb{R}$, existe uma reordenação dos termos dessa série tal que a soma da série, após a reordenação, é igual a $C$ e, ainda, existe uma outra reordenação dos termos tal que a série resultante diverge. 
+
+\section{Sucessões de Funções}
+
+$$\left( f_n\right)_{n \in \mathbb{N}},\ f_n:\ D \rightarrow \mathbb{R}$$
+
+\subsection{Convergência Pontual}
+
+Se
+$$\lim\limits_{n \to +\infty} f_n(x) = f(x)$$
+$$\forall{\epsilon > 0}\ \forall{x \in D}\ \exists{p(\epsilon, x)}: (\forall n > p \Rightarrow \left| f(x) - f_n(x)\right| < \epsilon)$$
+então
+$$f_n \xrightarrow{p} f$$
+
+\subsection{Convergência Uniforme}
+
+Se
+$$\lim\limits_{n \to +\infty} f_n(x) = f(x)$$
+$$\forall{\epsilon > 0}\ \exists{p(\epsilon)}: (\forall n > p \Rightarrow \left| f(x) - f_n(x)\right| < \epsilon,\ \forall x \in D)$$
+então
+$$f_n \xrightarrow{u} f$$
+
+\textbf{\underline{Nota:}} Convergência uniforme $\Rightarrow$ Convergência pontual
+
+\subsubsection{Condição necessária e suficiente de convergência uniforme}
+
+$$f_n \xrightarrow{u} f \Leftrightarrow \lim\limits_{n \to +\infty} \sup\limits_{x \in D} \left| f_n(x) - f(x)\right| = 0$$
+
+\subsection{Propriedades}
+
+Seja
+$$\left( f_n \right)_{n \in \mathbb{N}},\ f_n: D \rightarrow \mathbb{R}$$
+
+
+\begin{enumerate}
+\item Seja $a$ um ponto de acumulação de $D$. Se $f_n \xrightarrow{u} f$ e existe e é único $\lim\limits_{x \to a} f_n(x)$, então
+$$\lim\limits_{n \to +\infty} \lim\limits_{x \to a} f_n(x) = \lim\limits_{x \to a} \lim\limits_{n \to +\infty} f_n(x) = \lim\limits_{x \to a} f(x)$$
+\item Se $f_n \xrightarrow{u} f$, $f: D \rightarrow \mathbb{R}$ função limite e $f_n$ são contínuas em $a \in D$ então
+$$f \text{ é contínua em } a \text{ e }$$
+$$\lim\limits_{n \to +\infty} \lim\limits_{x \to a} f_n(x) = \lim\limits_{x \to a} \lim\limits_{n \to +\infty} f_n(x) = \lim\limits_{x \to a} f(x) = f(a)$$
+\item Se $f_n \xrightarrow{u} f$ em $[a, b]$, $f: [a, b] \rightarrow \mathbb{R}$ função limite e $\left( f_n\right)_{n \in \mathbb{N}}$ sucessão de funções contínuas em $[a, b]$, então
+$$f \text{ é integrável em } [a, b] \text{ e}$$
+$$\int\limits_a^b f(x)\ dx = \int\limits_a^b \lim\limits_{n \to +\infty} f_n(x)\ dx = \lim\limits_{n \to +\infty} \int\limits_a^b f_n (x)\ dx$$
+\item Se $\left( f_n \right)_{n \in \mathbb{N}}$ converge (pontual ou uniformemente) para $f$ em $D$, $f_n$ são funções com derivadas contínuas em $D$ e $\left( f_n' \right)_{n \in \mathbb{N}}$ converge uniformemente em $D$, então
+$$f'(x) = \lim\limits_{n \to +\infty} f_n(x) \Leftrightarrow \left(\lim\limits_{n \to +\infty} f_n(x)\right)' = \lim\limits_{n \to +\infty} f_n'(x)$$
+\end{enumerate}
+
+\section{Séries de Funções}
+
+Chama-se soma parcial da série
+$$\sum\limits_{n=1}^{+\infty} f_n(x),\ f_n: D \rightarrow \mathbb{R}$$
+à soma
+$$S_n(x) = \sum\limits_{k=1}^{n} f_k(x) = f_1(x) + f_2(x) + ... + f_n(x)$$
+
+Uma série de funções converge
+\begin{description}
+\item[pontualmente] em $D$ quando $\left( S_n(x)\right)_{n \in \mathbb{N}}$ converge pontualmente em $D$
+\item[uniformemente] em $D$ quando $\left( S_n(x)\right)_{n \in \mathbb{N}}$ converge uniformemente em $D$
+\end{description}
+
+\subsection{Critério de Weierstrass}
+
+Sejam
+$$\sum\limits_{n=1}^{+\infty} f_n(x),\ f_n: D \rightarrow \mathbb{R}$$
+$$\sum\limits_{n=1}^{+\infty} a_n,\ a_n \geq 0$$
+tais que
+$$\exists p \in \mathbb{N}: \forall n > p\ \forall x \in I \subseteq D\ \left| f_n(x)\right| \leq a_n$$
+Então $\sum\limits_{n=1}^{+\infty} f_n(x)$ converge uniformemente em $I$.
+
+\subsection{Propriedades}
+
+\begin{enumerate}
+\item Sejam $f_n,\ f: D \rightarrow \mathbb{R}$ e $a$ um ponto de acumulação de $D$. Se $\sum\limits_{n=1}^{+\infty} f_n(x) \xrightarrow{u} S(x)$ e existe e é finito $\lim\limits_{x \to a} f_n(x)$, então
+$$\text{A série numérica } \sum\limits_{n=1}^{+\infty} \lim\limits_{x \to a} f_n(x) \text{ é convergente e}$$
+$$\sum\limits_{n=1}^{+\infty} \lim\limits_{x \to a} f_n(x) = \lim\limits_{x \to a}\sum\limits_{n=1}^{+\infty} f_n(x)$$
+\item Sejam $f_n,\ f: D \rightarrow \mathbb{R}$. Se $\sum\limits_{n=1}^{+\infty} f_n(x) \xrightarrow{u} S(x)$ e $\forall n \in \mathbb{N} f_n$ é contínua em $a \in D$, então
+$$S(x) \text{ é também contínua em } a$$
+\item Sejam $f_n,\ f: [a, b] \rightarrow \mathbb{R}$. Se $\sum\limits_{n=1}^{+\infty} f_n(x) \xrightarrow{u} S(x)$ e $f_n$ são funções contínuas em $[a, b]$, então
+$$f \text{ é integrável em } [a, b] \text{ e}$$
+$$\int\limits_a^b S(x)\ dx = \int\limits_a^b \sum\limits_{n=1}^{+\infty} f_n(x)\ dx = \sum\limits_{n=1}^{+\infty} \int\limits_a^b f_n(x)\ dx$$
+\item Sejam $f_n,\ f: [a, b] \rightarrow \mathbb{R}$. Se $\sum\limits_{n=1}^{+\infty} f_n(x) \rightarrow S(x)$ (pontual ou uniformemente), $f_n \in C^1(D)$ e $\sum\limits_{n=1}^{+\infty} f_n'(x)$ é uniformemente convergente em $D$, então
+$$S'(x) = \sum\limits_{n=1}^{+\infty} f_n'(x) \Leftrightarrow \left( \sum\limits_{n=1}^{+\infty} f_n(x)\right)' = \sum\limits_{n=1}^{+\infty} f_n'(x)$$
+\end{enumerate}
+
+\textbf{\underline{Nota:}} As propriedades de séries de funções mantém-se para séries de potências e séries de Taylor.
+
+\subsection{Séries de Potências}
+
+$$\sum\limits_{n=0}^{+\infty} a_n (x-c)^n$$
+
+\subsubsection{Raio de Convergência}
+
+$$R = \lim\limits_{n \to +\infty} \left| \frac{a_n}{a_{n+1}}\right| \text{ (fórmula de D'Alembert)}$$
+$$R = \lim\limits_{n \to +\infty} \frac{1}{\sqrt[n]{\left| a_n\right|}} \text{ (fórmula de Cauchy)}$$
+
+\subsubsection{Teorema de Abel}
+
+Se a série $\sum\limits_{n=0}^{+\infty} a_n (x-c)^n$ converge em $x = c + A,\ A \neq 0$, então converge absolutamente em $x \in ]c - \left| A\right|, c + \left| A\right|[$.
+Se a série $\sum\limits_{n=0}^{+\infty} a_n (x-c)^n$ diverge em $x = c + B,\ B \neq 0$, então diverge em $x \in ]-\infty, c - \left| B\right|[ \cap ]c + \left| B\right|, +\infty[$
+
+\subsubsection{Teorema}
+
+Todas as séries da forma $\sum\limits_{n=0}^{+\infty} a_n (x-c)^n$ com raio de convergência $R$ convergem uniformemente em todo o intervalo fechado $I \subset ]c - R, c + R[$.
+
+\subsection{Séries de Taylor}
+
+$$\sum\limits_{n=0}^{+\infty} \frac{f^{(n)}(c)}{n!} (x - c)^n$$
+
+\subsubsection{Séries de MacLaurin}
+
+Série de Taylor com $c = 0$
+$$\sum\limits_{n=0}^{+\infty} \frac{f^{(n)}(0)}{n!} x^n$$
+
+\subsubsection{Polinómio de Taylor de grau n (centrado em c)}
+
+$$P_n(x) = T_c^n(f(x)) = \sum\limits_{k=0}^n \frac{f^{(k)}(c)}{k!} (x - c)^k$$
+
+\subsubsection{Resto de ordem n}
+
+$$R_n(x) = \sum\limits_{n=0}^{+\infty} \frac{f^{(n)}(c)}{n!} (x - c)^n - \sum\limits_{k=0}^n \frac{f^{(k)}(c)}{k!} (x - c)^k$$
+
+\subsubsection{Resto de ordem n na forma de Lagrange}
+
+$$R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} (x-c)^{n+1},\ \xi \in int(x, c)$$
+
+\subsubsection{Teorema}
+
+Uma função $f$ admite desenvolvimento em série de Taylor se em torno de $c$ no intervalo $]c - R, c + R[,\ R > 0$ se e só se
+
+\begin{itemize}
+\item $f \in C^{\infty}(]c - R, c + R[)$
+\item $\lim\limits_{n \to +\infty} R_n(x) = 0,\ x \in ]c - R, c + R[$
+\end{itemize}
+
+\subsubsection{Condição suficiente}
+
+Se um função $f$ admite derivadas finitas de todas as ordens em $[a, b]$ e essas derivadas, em valor absoluto podem ser majoradas por um valor $M,\ in \mathbb{R}$, isto é $\left| f^{(n)}\right| \leq M,\ \forall x \in [a, b]$, então em todo o intervalo $[a, b]$ $f$ admite desenvolvimento em torno do ponto $c \in ]a, b[$.
+
+\subsubsection{Função analítica}
+
+$f$ é uma função analítica em $a$ se $\exists r > 0: \forall x \in ]a-r, a+r[$ a série de Taylor de $f$ converge para $f(x)$.
+
+\section{Séries de Fourier}
+
+Uma função $f: \mathbb{R} \rightarrow \mathbb{R}$ diz-se periódica de período $T$ se $f(x + T) = f(x),\ \forall x \in \mathbb{R}$. Ao menor dos períodos chama-se período fundamental.
+
+Seja $f: \mathbb{R} \rightarrow \mathbb{R}$, $2\pi$ periódica e integrável. Então, a
+$$\frac{a_0}{2} + \sum\limits_{n=1}^{+\infty} \left[a_n\cos(nx) + b_n\sin(nx)\right] \sim f(x),$$
+$$a_n = \frac{1}{\pi}\int\limits_{-\pi}^{\pi} f(x)\cos(nx)\ dx,\ n \in \mathbb{N}_0$$
+$$b_n = \frac{1}{\pi}\int\limits_{-\pi}^{\pi} f(x)\sin(nx)\ dx,\ n \in \mathbb{N}$$
+chama-se a série de Fourier associada a $f$.
+
+Se $f: D \rightarrow \mathbb{R}$ admite representação em série de Fourier e é uma função par, isto é, $f(-x) = f(x),\ \forall x \in D$, então o desenvolvimento simplifica-se na seguinte expressão (chamada de série de cossenos)
+$$\frac{a_0}{2} + \sum\limits_{n=1}^{+\infty} a_n\cos(nx) \sim f_{\text{par}}(x),$$
+$$a_n = \frac{2}{\pi}\int\limits_{0}^{\pi} f(x)\cos(nx)\ dx,\ n \in \mathbb{N}_0$$
+
+Se $f: D \rightarrow \mathbb{R}$ admite representação em série de Fourier e é uma função ímpar, isto é, $f(-x) = -f(x),\ \forall x \in D$, então o desenvolvimento simplifica-se na seguinte expressão (chamada de série de senos)
+$$\sum\limits_{n=1}^{+\infty} b_n\sin(nx) \sim f_{\text{ímpar}}(x),$$
+$$b_n = \frac{2}{\pi}\int\limits_{0}^{\pi} f(x)\sin(nx)\ dx,\ n \in \mathbb{N}$$
+
+\subsection{Condição suficiente para desenvolvimento}
+
+Se $f$ é uma função periódica de período $2\pi$, definida e integrável em $[-\pi, \pi]$, então a série de Fourier de $f$ converge em todo o $\mathbb{R}$ para a função soma $S(x)$ dada por
+$$S(x) = \frac{f(x^+) + f(x^-)}{2},\ \forall x \in \mathbb{R}$$
+
+\subsection{Convergência Uniforme}
+
+Se $f$ é uma função periódica de período $2\pi$, contínua e seccionalmente diferenciável (isto é, existem derivadas finitas em todos os pontos do domínio de $f$), então a série de Fourier de $f$ \textbf{\underline{converge uniformemente}} em todo o $\mathbb{R}$ para $f(x)$, e escreve-se
+$$f(x) = \frac{a_0}{2} + \sum\limits_{n=1}^{+\infty} \left[a_n\cos(nx) + b_n\sin(nx)\right],$$
+com $a_n$ e $b_n$ tal como definidos acima.
+
+\textbf{\underline{Nota:}} Se $f$ \underline{não é contínua}, então a série de Fourier de $f$ \underline{não é uniformemente convergente}.
+
+\subsection{Extensão periódica de um função}
+
+Seja $f: ]0, 2\pi[ \rightarrow \mathbb{R}$, então
+$$\phi(x) =
+\begin{cases}
+f(x), &x \in ]0, 2\pi[\\
+\phi(x + 2k\pi), &x \notin ]0, 2\pi[
+\end{cases},\ k \in \mathbb{Z}$$
+é uma extensão $2\pi$ periódica de $f$.
+
+\subsubsection{Extensão periódica par}
+
+Seja $f: ]0, \pi[ \rightarrow \mathbb{R}$, então
+$$F(x) =
+\begin{cases}
+f(x), &0 < x < \pi\\
+f(-x), &-\pi < x < 0
+\end{cases}$$
+é uma extensão periódica (de período $2\pi$) par de $f$.
+
+\subsubsection{Extensão periódica ímpar}
+
+Seja $f: ]0, \pi[ \rightarrow \mathbb{R}$, então
+$$F(x) =
+\begin{cases}
+f(x), &0 < x < \pi\\
+-f(-x), &-\pi < x < 0
+\end{cases}$$
+é uma extensão periódica (de período $2\pi$) ímpar de $f$.
+
+\subsection{}
+
+\textbf{\underline{Nota:}} Séries de Fourier são séries de funções, e portanto partilham dos mesmos critérios e propriedades que estas últimas.
+
+\section{Fórmulas}
+
+$$\sin^2 x + \cos^2 x = 1$$
+$$1 + \tan^2 x = \frac{1}{\cos^2 x}$$
+$$\sin(a + b) = \sin a \cos b + \sin b\cos a$$
+$$\cos(a + b) = \cos a \cos b - \sin a\sin b$$
+$$\tan(a + b) = \frac{\tan a+\tan b}{1 - \tan a\tan b}$$
+$$\cos^2 x = \frac{1 + \cos(2x)}{2}$$
+$$\sin^2 x = \frac{1 - \cos(2x)}{2}$$
+$$\tan^2 x = \frac{1 - \cos(2x)}{1 + \cos(2x)}$$
+$$\sin x\cos y = \frac{\sin(x-y) + \sin(x+y)}{2}$$
+$$\sin x\cos y = \frac{\cos(x-y) - \cos(x+y)}{2}$$
+$$\cos x\cos y = \frac{\cos(x-y) + \cos(x+y)}{2}$$
+$$\sinh x = \frac{e^x - e^{-x}}{2}$$
+$$\cosh x = \frac{e^x + e^{-x}}{2}$$
+$$\tanh x = \frac{\sinh x}{\cosh x}$$
+
 \vfill
-\hfill Ricardo Jesus
+\hfill Ricardo Jesus\\
+\hfill prof. Vera Kharlamova
 %\clearpage
 %\rule{0.3\linewidth}{0.25pt}
 %\scriptsize
 %\bibliographystyle{abstract}
-\bibliography{refFile}
+%\bibliography{refFile}
 \end{multicols}
 \end{document}
