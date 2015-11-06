@@ -100,10 +100,21 @@ $(a \pm b)^3 = a^3 \pm 3a^2b + 3ab^2 \pm b^3$
 
 $\lim_{x \to \infty} (1+\frac{1}{x})^x=e$\\
 $\lim_{x \to 0} \frac{\sin(x)}{x}=1$\\
+$\lim_{x \to 0} \frac{\tan(x)}{x}=1$\\
 $\lim_{x \to 0} \frac{e^x-1}{x}=1$\\
 $\lim_{x \to 0} \frac{\ln(x+1)}{x}=1$\\
 $\lim_{x \to +\infty} \frac{\ln(x)}{x}=0$\\
 $\lim_{x \to +\infty} \frac{e^x}{x^p}=+\infty, (p \in \mathbb{R})$\\
+
+\subsection{Infinitésimas Equivalentes}
+
+$\begin{rcases}
+\sin x\\
+\tan x\\
+(e^x - 1)\\
+\ln(x + 1)\\
+\end{rcases}
+\approx x \text{ se } x \to 0$
 
 \subsection{Limites Gerais}
 
@@ -114,7 +125,11 @@ $\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(
 Indeterminações $\frac{0}{0}$ ou $\frac{\pm \infty}{\pm \infty}$:\\
 $\lim_{x \to a}\frac{f(x)}{g(x)}=\lim_{x \to a}\frac{f'(x)}{g'(x)}$\\
 Indeterminações $1^\infty$:\\
-Transformar em $\lim_{x \to a}[(1 + K_0)^\frac{1}{K_0}]^\text{infinito},\ K_0\ \text{é infinitésimo}$\\
+Se $\lim\limits_{x \to a} f(x) = 1$ e $\lim\limits_{x \to a} g(x) = \infty$, então\\
+$$
+\lim\limits_{x \to a} \left[ f(x) \right]^{g(x)} = \lim\limits_{x \to a} \left[ (1 + (f(x) - 1))^{\frac{1}{f(x) - 1}} \right]^{(f(x) - 1)g(x)}$$\\$$
+= e ^ {\lim\limits_{x \to a} (f(x) - 1)g(x)}
+$$\\
 
 \section{Derivadas}
 
