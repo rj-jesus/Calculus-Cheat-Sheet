@@ -288,9 +288,9 @@ $$y^{(n)} + a_1 y^{(n-1)} + ... + a_n y = Q(x),\ a_i \in \mathbb{R},\ i = 1, 2, 
 
 As soluções de equações diferenciais de ordem $n$ têm o aspeto $y_g = y_h + y_p$. Assim, para calcular $y_g$ podem-se seguir as etapas abaixo.
 \begin{enumerate}
-\item Calcular as soluções do polinómio caraterístico da equação, ou seja, resolver:
+\item Calcular as soluções do polinómio característico da equação, ou seja, resolver:
 $$\lambda^n + a_1 \lambda^{n-1} + a_2 \lambda^{n-2} + ... + a_n = 0$$
-\item A cada solução $\lambda_i$ de multiplicidade $s$ faz-se corresponder uma equação $y_i$, de forma a se obter o sistema fundamental $\{y_1, y_2, ..., y_n\}$. Cada equação $y_i$ do sistema depende de se $\lambda_i$ é uma raíz real ou um par de raízes complexas da equação caraterística:
+\item A cada solução $\lambda_i$ de multiplicidade $s$ faz-se corresponder uma equação $y_i$, de forma a se obter o sistema fundamental $\{y_1, y_2, ..., y_n\}$. Cada equação $y_i$ do sistema depende de se $\lambda_i$ é uma raíz real ou um par de raízes complexas da equação característica:
 \begin{description}
 \item[$\lambda_i \in \mathbb{R}$]
 $$y_{i_1} = e^{\lambda_i x},\ y_{i_2} = x e^{\lambda_i x}, ...,\ y_{i_s} = x^{s-1} e^{\lambda_i x}$$
@@ -344,7 +344,7 @@ $$y_g = C_1(x)y_1 + C_2y_2 + ... + C_ny_n$$
 \begin{description}
 \item[$Q(x) = e^{\alpha x} M_n(x)$] $M_n(x)$ é um polinómio de ordem $n$. Considere-se que $s$ denota a multiplicidade da raíz real $\lambda$ em que $\lambda = \alpha$ (caso essa raíz não exista, $s = 0$). Então, a solução particular da equação terá o aspeto
 $$y_p = x^s e^{\alpha x} (A_nx^n + A_{n-1}x^{n-1} + ... + A_0)$$
-\item[$Q(x) = e^{\alpha x}(M_n(x)\cos{\beta x} + N_n(x)\sin{\beta x}$] $M_n(x),\ N_n(x)$ são polinómios de ordem $n$. Se existe alguma raíz $\lambda$ da equação caraterística tal que $\lambda = \alpha \pm i\beta$, então seja $s$ a multiplicidade dessa raíz. Caso contrário $s = 0$. Neste caso, a equação particular da equação terá o aspeto
+\item[$Q(x) = e^{\alpha x}(M_n(x)\cos{\beta x} + N_n(x)\sin{\beta x}$] $M_n(x),\ N_n(x)$ são polinómios de ordem $n$. Se existe alguma raíz $\lambda$ da equação característica tal que $\lambda = \alpha \pm i\beta$, então seja $s$ a multiplicidade dessa raíz. Caso contrário $s = 0$. Neste caso, a equação particular da equação terá o aspeto
 $$y_p = x^s e^{\alpha x}((A_nx^n + A_{n-1}x^{n-1} + ... + A_0)\cos{\beta x} +$$
 $$(B_nx^n + B_{n-1}x^{n-1} + ... + B_0)\sin{\beta x})$$
 \end{description}
