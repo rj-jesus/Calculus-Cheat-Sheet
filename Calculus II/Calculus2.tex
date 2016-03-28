@@ -211,7 +211,7 @@ Caso a equação esteja na forma $M(x, y)\ dx + N(x, y)\ dy = 0$
 \item Substituir de volta $u$ por $\frac{y}{x}$
 \end{enumerate}
 
-\subsubsection{Equações Redutiveis a Homogéneas ou de Variáveis Separáveis}
+\subsubsection{Equações Redutíveis a Homogéneas ou de Variáveis Separáveis}
 
 $$y' = \Phi\left(\frac{a_1 x + b_1 y + c_1}{a_2 x + b_2 y + c_2}\right),$$
 $$a_i, b_i, c_i \in \mathbb{R},\ i = 1,\ 2,\ c_1 \neq 0 \text{ ou } c_2 \neq 0$$
@@ -248,7 +248,7 @@ $$v'+ P(x)v = 0$$
 \begin{enumerate}
 \item Resolver a equação homogénea (que é de variáveis separáveis) associada
 $$y' + P(x)y = 0$$
-\item Na solução do ponto anterior surge uma constante. Considere-se a solução como tendo o aspecto $C H(x)$ onde $H(x) = e^{-\int P(x)\ dx}$ e $C$ é uma constante. Então, passa-se essa constante a uma função de $x$, ou seja, obtém-se $C(x)H(x)$
+\item Na solução do ponto anterior surge uma constante. Considere-se a solução como tendo o aspeto $C H(x)$ onde $H(x) = e^{-\int P(x)\ dx}$ e $C$ é uma constante. Então, passa-se essa constante a uma função de $x$, ou seja, obtém-se $C(x)H(x)$
 \item Iguala-se a expressão obtida no ponto anterior à função $Q(x)$, mas considerando a parcela $C(x)$ como estando derivada. Ou seja, resolve-se $C'(x)H(x) = Q(x)$
 \item A solução geral será dada por $y = C(x)H(x) = H(x)\int H^{-1}(x)Q(x)\ dx$
 \end{enumerate}
@@ -267,7 +267,7 @@ $$y' + P(x)y = Q(x)y^\alpha,\ \alpha \neq 0,\ \alpha \ne 1$$
 Para resolver uma equação de Bernoulli basta utilizar um dos métodos abaixo:
 \begin{itemize}
 \item Resolver pelo \textbf{Método de Bernoulli}
-\item Resolver pela mudança de variável $z = y^{1-\alpha}$, de onde se obtém uma equação de aspecto
+\item Resolver pela mudança de variável $z = y^{1-\alpha}$, de onde se obtém uma equação de aspeto
 $$\frac{1}{1-\alpha}z' + P(x)z = Q(x)$$
 que não é mais do que uma equação linear de 1ª ordem, que portanto pode ser resolvida pelos processos expostos acima. No final, deve-se devolver as variáveis iniciais e deve-se confirmar (especialmente se $\alpha$ for positivo) que não se perderam soluções.
 \end{itemize}
@@ -286,11 +286,11 @@ Conhecendo-se esses valores, o processo para obtenção da solução particular 
 
 $$y^{(n)} + a_1 y^{(n-1)} + ... + a_n y = Q(x),\ a_i \in \mathbb{R},\ i = 1, 2, ..., n$$
 
-As soluções de equações diferenciais de ordem $n$ têm o aspecto $y_g = y_h + y_p$. Assim, para calcular $y_g$ podem-se seguir as etapas abaixo.
+As soluções de equações diferenciais de ordem $n$ têm o aspeto $y_g = y_h + y_p$. Assim, para calcular $y_g$ podem-se seguir as etapas abaixo.
 \begin{enumerate}
-\item Calcular as soluções do polinómio característico da equação, ou seja, resolver:
+\item Calcular as soluções do polinómio caraterístico da equação, ou seja, resolver:
 $$\lambda^n + a_1 \lambda^{n-1} + a_2 \lambda^{n-2} + ... + a_n = 0$$
-\item A cada solução $\lambda_i$ de multiplicidade $s$ faz-se corresponder uma equação $y_i$, de forma a se obter o sistema fundamental $\{y_1, y_2, ..., y_n\}$. Cada equação $y_i$ do sistema depende de se $\lambda_i$ é uma raíz real ou um par de raízes complexas da equação característica:
+\item A cada solução $\lambda_i$ de multiplicidade $s$ faz-se corresponder uma equação $y_i$, de forma a se obter o sistema fundamental $\{y_1, y_2, ..., y_n\}$. Cada equação $y_i$ do sistema depende de se $\lambda_i$ é uma raíz real ou um par de raízes complexas da equação caraterística:
 \begin{description}
 \item[$\lambda_i \in \mathbb{R}$]
 $$y_{i_1} = e^{\lambda_i x},\ y_{i_2} = x e^{\lambda_i x}, ...,\ y_{i_s} = x^{s-1} e^{\lambda_i x}$$
@@ -340,15 +340,15 @@ $$y_g = C_1(x)y_1 + C_2y_2 + ... + C_ny_n$$
 
 \begin{enumerate}
 \item Começar por obter o sistema fundamental de soluções da equação diferencial homogénea associada (ver secção anterior)
-\item A solução particular que se procura é dada em função do aspecto de $Q(x)$
+\item A solução particular que se procura é dada em função do aspeto de $Q(x)$
 \begin{description}
-\item[$Q(x) = e^{\alpha x} M_n(x)$] $M_n(x)$ é um polinómio de ordem $n$. Considere-se que $s$ denota a multiplicidade da raíz real $\lambda$ em que $\lambda = \alpha$ (caso essa raíz não exista, $s = 0$). Então, a solução particular da equação terá o aspecto
+\item[$Q(x) = e^{\alpha x} M_n(x)$] $M_n(x)$ é um polinómio de ordem $n$. Considere-se que $s$ denota a multiplicidade da raíz real $\lambda$ em que $\lambda = \alpha$ (caso essa raíz não exista, $s = 0$). Então, a solução particular da equação terá o aspeto
 $$y_p = x^s e^{\alpha x} (A_nx^n + A_{n-1}x^{n-1} + ... + A_0)$$
-\item[$Q(x) = e^{\alpha x}(M_n(x)\cos{\beta x} + N_n(x)\sin{\beta x}$] $M_n(x),\ N_n(x)$ são polinómios de ordem $n$. Se existe alguma raíz $\lambda$ da equação característica tal que $\lambda = \alpha \pm i\beta$, então seja $s$ a multiplicidade dessa raíz. Caso contrário $s = 0$. Neste caso, a equação particular da equação terá o aspecto
+\item[$Q(x) = e^{\alpha x}(M_n(x)\cos{\beta x} + N_n(x)\sin{\beta x}$] $M_n(x),\ N_n(x)$ são polinómios de ordem $n$. Se existe alguma raíz $\lambda$ da equação caraterística tal que $\lambda = \alpha \pm i\beta$, então seja $s$ a multiplicidade dessa raíz. Caso contrário $s = 0$. Neste caso, a equação particular da equação terá o aspeto
 $$y_p = x^s e^{\alpha x}((A_nx^n + A_{n-1}x^{n-1} + ... + A_0)\cos{\beta x} +$$
 $$(B_nx^n + B_{n-1}x^{n-1} + ... + B_0)\sin{\beta x})$$
 \end{description}
-\item Após ter sido determinado o aspecto que a solução particular deve ter, resolve-se a equação inicial substituindo-se $y$ "pelo aspecto" que se determinou acima, ou seja, resolve-se
+\item Após ter sido determinado o aspeto que a solução particular deve ter, resolve-se a equação inicial substituindo-se $y$ "pelo aspeto" que se determinou acima, ou seja, resolve-se
 $$y_p^{(n)} + a_1 y_p^{(n-1)} + ... + a_n y_p = Q(x)$$
 de forma a se obterem os valores de $A_i$ e $B_i,\ i = 1,\ 2, ...,\ n$ das equações acima. Assim, obtém-se a equação particular para a equação diferencial a resolver
 \item Como $y_g = y_h + y_p$ e já foram calculados $y_h$ e $y_p$, a solução geral da equação completa é apenas a soma destas equações ($y_h$ e $y_p$)
@@ -393,7 +393,7 @@ $$\sum\limits_{n=p}^{+\infty} r^n,\ p \in \mathbb{R}$$
 \item[$\mathbf{\left| r \right| \geq 1}$] \underline{Divergência}
 \end{description}
 
-\subsection{Séries Telescópicas (ou de Mengoli ou Redutiveis)}
+\subsection{Séries Telescópicas (ou de Mengoli ou Redutíveis)}
 
 $$\sum\limits_{n=1}^{+\infty} (a_n - a_{n+p}), p \in \mathbb{N}$$
 
@@ -582,7 +582,7 @@ $$\int\limits_a^b S(x)\ dx = \int\limits_a^b \sum\limits_{n=1}^{+\infty} f_n(x)\
 $$S'(x) = \sum\limits_{n=1}^{+\infty} f_n'(x) \Leftrightarrow \left( \sum\limits_{n=1}^{+\infty} f_n(x)\right)' = \sum\limits_{n=1}^{+\infty} f_n'(x)$$
 \end{enumerate}
 
-\textbf{\underline{Nota:}} As propriedades de séries de funções mantém-se para séries de potências e séries de Taylor.
+\textbf{\underline{Nota:}} As propriedades de séries de funções mantêm-se para séries de potências e séries de Taylor.
 
 \subsection{Séries de Potências}
 
@@ -606,7 +606,7 @@ Todas as séries da forma $\sum\limits_{n=0}^{+\infty} a_n (x-c)^n$ com raio de 
 
 $$\sum\limits_{n=0}^{+\infty} \frac{f^{(n)}(c)}{n!} (x - c)^n$$
 
-\subsubsection{Séries de MacLaurin}
+\subsubsection{Séries de Maclaurin}
 
 Série de Taylor com $c = 0$
 $$\sum\limits_{n=0}^{+\infty} \frac{f^{(n)}(0)}{n!} x^n$$
@@ -634,7 +634,7 @@ Uma função $f$ admite desenvolvimento em série de Taylor se em torno de $c$ n
 
 \subsubsection{Condição suficiente}
 
-Se um função $f$ admite derivadas finitas de todas as ordens em $[a, b]$ e essas derivadas, em valor absoluto podem ser majoradas por um valor $M,\ in \mathbb{R}$, isto é $\left| f^{(n)}\right| \leq M,\ \forall x \in [a, b]$, então em todo o intervalo $[a, b]$ $f$ admite desenvolvimento em torno do ponto $c \in ]a, b[$.
+Se uma função $f$ admite derivadas finitas de todas as ordens em $[a, b]$ e essas derivadas, em valor absoluto podem ser majoradas por um valor $M,\ in \mathbb{R}$, isto é $\left| f^{(n)}\right| \leq M,\ \forall x \in [a, b]$, então em todo o intervalo $[a, b]$ $f$ admite desenvolvimento em torno do ponto $c \in ]a, b[$.
 
 \subsubsection{Função analítica}
 
@@ -671,7 +671,7 @@ com $a_n$ e $b_n$ tal como definidos acima.
 
 \textbf{\underline{Nota:}} Se $f$ \underline{não é contínua}, então a série de Fourier de $f$ \underline{não é uniformemente convergente}.
 
-\subsection{Extensão periódica de um função}
+\subsection{Extensão periódica de uma função}
 
 Seja $f: ]0, 2\pi[ \rightarrow \mathbb{R}$, então
 $$\phi(x) =
